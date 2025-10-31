@@ -8,13 +8,7 @@ export default function ProblemSolution() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Problem Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
               Tobacco Depletes Your Body
             </h2>
@@ -45,16 +39,10 @@ export default function ProblemSolution() {
                 </footer>
               </blockquote>
             </div>
-          </motion.div>
+          </div>
 
           {/* Solution Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12"
-          >
+          <div className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12">
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
               Replenishment Works
             </h2>
@@ -83,7 +71,7 @@ export default function ProblemSolution() {
                 Dr. Bee Leez Blend provides therapeutic doses of every depleted nutrient in one patent-protected formula.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

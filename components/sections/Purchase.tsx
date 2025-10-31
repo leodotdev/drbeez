@@ -5,20 +5,14 @@ import { Phone, Mail, AlertTriangle } from 'lucide-react';
 
 export default function Purchase() {
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-cream">
+    <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-12"
-        >
+        <div className="text-center space-y-12">
           {/* Purchase Button */}
           <div>
             <a
               href={process.env.NEXT_PUBLIC_PURCHASE_URL || '#'}
-              className="inline-block font-[family-name:var(--font-body)] bg-royal-blue text-white px-12 py-6 rounded-lg text-xl md:text-2xl font-bold hover:bg-royal-blue/90 transition-all duration-200 shadow-2xl"
+              className="inline-block font-[family-name:var(--font-body)] bg-royal-blue text-white px-8 py-3 rounded-lg text-xl md:text-2xl font-bold hover:bg-royal-blue/90 transition-all duration-200 shadow-2xl"
             >
               Purchase from Manufacturer
             </a>
@@ -53,13 +47,7 @@ export default function Purchase() {
           </div>
 
           {/* Disclaimers */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-amber-50 border-2 border-amber-600/40 rounded-lg p-8 md:p-10 text-left"
-          >
+          <div className="bg-amber-50 border-2 border-amber-600/40 rounded-lg p-8 md:p-10 text-left">
             <div className="flex items-start gap-4 mb-6">
               <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
               <h4 className="font-[family-name:var(--font-body)] text-2xl font-bold text-amber-900">
@@ -76,13 +64,13 @@ export default function Purchase() {
                 † These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use if you have any medical conditions or take medications.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Copyright */}
           <div className="font-[family-name:var(--font-body)] text-sm text-charcoal/50 pt-8">
             <p>© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

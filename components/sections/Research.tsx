@@ -15,60 +15,37 @@ export default function Research() {
   return (
     <section id="research" className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-tight">
-            Science-Backed<br />Formulation
-          </h2>
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Research Highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <h3 className="font-[family-name:var(--font-body)] text-2xl font-semibold text-charcoal">
-              Based on extensive clinical research:
-            </h3>
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-tight">
+                Science-backed<br />Formulation
+              </h2>
+              <h3 className="font-[family-name:var(--font-body)] text-2xl font-semibold text-charcoal">
+                Based on extensive clinical research:
+              </h3>
+            </div>
 
             <ul className="space-y-6">
               {researchHighlights.map((highlight, index) => (
-                <motion.li
+                <li
                   key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex gap-4 font-[family-name:var(--font-body)] text-lg text-charcoal/80 leading-relaxed"
                 >
                   <span className="text-royal-blue font-bold text-xl flex-shrink-0">✓</span>
                   <span>{highlight}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
 
             <p className="font-[family-name:var(--font-body)] text-lg text-charcoal/70 pt-4 italic">
               Over 100 peer-reviewed studies support this approach
             </p>
-          </motion.div>
+          </div>
 
           {/* Downloads */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12"
-          >
+          <div className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12">
             <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-charcoal tracking-tight">
               Download the Research
             </h3>
@@ -118,7 +95,7 @@ export default function Research() {
                 </div>
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
