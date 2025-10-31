@@ -1,0 +1,126 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { FileText, Presentation } from 'lucide-react';
+
+const researchHighlights = [
+  '500,000+ participant European study: Vitamin B6 levels inversely associated with lung cancer risk',
+  'N-Acetylcysteine shown to reduce cigarette consumption in nicotine-dependent individuals',
+  'Antioxidant supplementation prevented cardiac hypertrophy in cigarette smoke exposure',
+  'Vitamin C markedly improves endothelial function in chronic smokers',
+  'High-dose magnesium significantly decreased number of cigarettes smoked',
+];
+
+export default function Research() {
+  return (
+    <section id="research" className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-tight">
+            Science-Backed<br />Formulation
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Research Highlights */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <h3 className="font-[family-name:var(--font-body)] text-2xl font-semibold text-charcoal">
+              Based on extensive clinical research:
+            </h3>
+
+            <ul className="space-y-6">
+              {researchHighlights.map((highlight, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex gap-4 font-[family-name:var(--font-body)] text-lg text-charcoal/80 leading-relaxed"
+                >
+                  <span className="text-royal-blue font-bold text-xl flex-shrink-0">✓</span>
+                  <span>{highlight}</span>
+                </motion.li>
+              ))}
+            </ul>
+
+            <p className="font-[family-name:var(--font-body)] text-lg text-charcoal/70 pt-4 italic">
+              Over 100 peer-reviewed studies support this approach
+            </p>
+          </motion.div>
+
+          {/* Downloads */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12"
+          >
+            <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-charcoal tracking-tight">
+              Download the Research
+            </h3>
+
+            <div className="space-y-6">
+              {/* PDF Download */}
+              <a
+                href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
+                download
+                className="group block p-6 bg-cream border-2 border-charcoal/20 rounded-lg hover:border-royal-blue hover:bg-royal-blue/5 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <FileText className="w-8 h-8 text-royal-blue flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <div className="flex-1">
+                    <h4 className="font-[family-name:var(--font-body)] text-xl font-semibold text-charcoal mb-2 group-hover:text-royal-blue transition-colors">
+                      Complete Abstracts of Nutrient Depletion Studies
+                    </h4>
+                    <p className="font-[family-name:var(--font-body)] text-base text-charcoal/60">
+                      Compilation of research citations and abstracts
+                    </p>
+                    <p className="font-[family-name:var(--font-mono)] text-sm text-charcoal/50 mt-2">
+                      PDF
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              {/* PPTX Download */}
+              <a
+                href="/downloads/Powerpoint_Tob_Smoking_New_Perspective_allows_3-8-25.pptx"
+                download
+                className="group block p-6 bg-cream border-2 border-charcoal/20 rounded-lg hover:border-royal-blue hover:bg-royal-blue/5 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <Presentation className="w-8 h-8 text-royal-blue flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <div className="flex-1">
+                    <h4 className="font-[family-name:var(--font-body)] text-xl font-semibold text-charcoal mb-2 group-hover:text-royal-blue transition-colors">
+                      "Tobacco Smoking: A New Perspective"
+                    </h4>
+                    <p className="font-[family-name:var(--font-body)] text-base text-charcoal/60">
+                      Dr. Bieley's comprehensive research presentation (75 slides)
+                    </p>
+                    <p className="font-[family-name:var(--font-mono)] text-sm text-charcoal/50 mt-2">
+                      PPTX
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
