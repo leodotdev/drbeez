@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useContent } from '@/lib/use-content';
 
 export default function ProblemSolution() {
+  const { content } = useContent();
   return (
     <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +11,7 @@ export default function ProblemSolution() {
           {/* Problem Column */}
           <div className="space-y-8">
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
-              Tobacco Depletes Your Body
+              {content.problemSolution.problemTitle}
             </h2>
 
             <div className="font-[family-name:var(--font-body)] text-lg md:text-xl text-charcoal/80 leading-relaxed space-y-6">
@@ -44,7 +45,7 @@ export default function ProblemSolution() {
           {/* Solution Column */}
           <div className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12">
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
-              Replenishment Works
+              {content.problemSolution.solutionTitle}
             </h2>
 
             <div className="font-[family-name:var(--font-body)] text-lg md:text-xl text-charcoal/80 leading-relaxed space-y-6">
@@ -68,7 +69,7 @@ export default function ProblemSolution() {
               </ul>
 
               <p className="pt-4 font-medium">
-                Dr. Bee Leez Blend provides therapeutic doses of every depleted nutrient in one patent-protected formula.
+                {content.problemSolution.solutionClosing}
               </p>
             </div>
           </div>

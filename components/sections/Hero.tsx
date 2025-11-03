@@ -1,9 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useContent } from '@/lib/use-content';
 
 export default function Hero() {
+  const { content } = useContent();
+
   return (
     <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-12">
@@ -22,15 +24,15 @@ export default function Hero() {
         <div className="flex flex-col gap-8 items-center">
           <div className="space-y-4">
             <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl lg:text-8xl font-semibold text-charcoal tracking-tight leading-[1.05]">
-              Dr. Bee Leez Blend
+              {content.hero.title}
             </h1>
             <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-royal-blue font-medium tracking-widest uppercase">
-              Smoker's Supplement™
+              {content.hero.subtitle}
             </p>
           </div>
 
           <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl lg:text-3xl text-charcoal leading-relaxed max-w-3xl">
-            Scientifically Formulated to Replace Vital Nutrients Depleted by Tobacco Smoking
+            {content.hero.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 items-center pt-4">
@@ -49,8 +51,8 @@ export default function Hero() {
           </div>
 
           <div className="font-[family-name:var(--font-body)] text-base md:text-lg text-charcoal/70 space-y-1 pt-4">
-            <p>Based on U.S. Patent #8,889,194</p>
-            <p>Developed by Dr. Harlan Bieley, MD, MS</p>
+            <p>{content.hero.patent}</p>
+            <p>{content.hero.developer}</p>
           </div>
         </div>
       </div>

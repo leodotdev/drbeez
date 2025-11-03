@@ -1,17 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { FileText, Presentation } from 'lucide-react';
-
-const researchHighlights = [
-  '500,000+ participant European study: Vitamin B6 levels inversely associated with lung cancer risk',
-  'N-Acetylcysteine shown to reduce cigarette consumption in nicotine-dependent individuals',
-  'Antioxidant supplementation prevented cardiac hypertrophy in cigarette smoke exposure',
-  'Vitamin C markedly improves endothelial function in chronic smokers',
-  'High-dose magnesium significantly decreased number of cigarettes smoked',
-];
+import { useContent } from '@/lib/use-content';
 
 export default function Research() {
+  const { content } = useContent();
   return (
     <section id="research" className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -20,15 +13,15 @@ export default function Research() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-tight">
-                Science-backed<br />Formulation
+                {content.research.title}
               </h2>
               <h3 className="font-[family-name:var(--font-body)] text-2xl font-semibold text-charcoal">
-                Based on extensive clinical research:
+                {content.research.subtitle}
               </h3>
             </div>
 
             <ul className="space-y-6">
-              {researchHighlights.map((highlight, index) => (
+              {content.research.highlights.map((highlight, index) => (
                 <li
                   key={index}
                   className="flex gap-4 font-[family-name:var(--font-body)] text-lg text-charcoal/80 leading-relaxed"
@@ -40,14 +33,14 @@ export default function Research() {
             </ul>
 
             <p className="font-[family-name:var(--font-body)] text-lg text-charcoal/70 pt-4 italic">
-              Over 100 peer-reviewed studies support this approach
+              {content.research.highlightsFooter}
             </p>
           </div>
 
           {/* Downloads */}
           <div className="space-y-8 lg:border-l lg:border-charcoal/20 lg:pl-12">
             <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-charcoal tracking-tight">
-              Download the Research
+              {content.research.downloadsTitle}
             </h3>
 
             <div className="space-y-6">
