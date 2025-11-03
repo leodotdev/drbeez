@@ -31,6 +31,34 @@ export default function AdminPage() {
     }
   };
 
+  const updateHero = (field: keyof SiteContent['hero'], value: string) => {
+    setContent(prev => ({
+      ...prev,
+      hero: { ...prev.hero, [field]: value }
+    }));
+  };
+
+  const updateProblemSolution = (field: keyof SiteContent['problemSolution'], value: string) => {
+    setContent(prev => ({
+      ...prev,
+      problemSolution: { ...prev.problemSolution, [field]: value }
+    }));
+  };
+
+  const updateResearch = (field: keyof SiteContent['research'], value: string | string[]) => {
+    setContent(prev => ({
+      ...prev,
+      research: { ...prev.research, [field]: value }
+    }));
+  };
+
+  const updatePurchase = (field: keyof SiteContent['purchase'], value: string) => {
+    setContent(prev => ({
+      ...prev,
+      purchase: { ...prev.purchase, [field]: value }
+    }));
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (pin === '5555') {
@@ -138,7 +166,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.hero.title}
-                    onChange={(e) => setContent({...content, hero: {...content.hero, title: e.target.value}})}
+                    onChange={(e) => updateHero('title', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -147,7 +175,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.hero.subtitle}
-                    onChange={(e) => setContent({...content, hero: {...content.hero, subtitle: e.target.value}})}
+                    onChange={(e) => updateHero('subtitle', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -155,7 +183,7 @@ export default function AdminPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                   <textarea
                     value={content.hero.description}
-                    onChange={(e) => setContent({...content, hero: {...content.hero, description: e.target.value}})}
+                    onChange={(e) => updateHero('description', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                     rows={3}
                   />
@@ -165,7 +193,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.hero.patent}
-                    onChange={(e) => setContent({...content, hero: {...content.hero, patent: e.target.value}})}
+                    onChange={(e) => updateHero('patent', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -174,7 +202,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.hero.developer}
-                    onChange={(e) => setContent({...content, hero: {...content.hero, developer: e.target.value}})}
+                    onChange={(e) => updateHero('developer', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -190,7 +218,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.problemSolution.problemTitle}
-                    onChange={(e) => setContent({...content, problemSolution: {...content.problemSolution, problemTitle: e.target.value}})}
+                    onChange={(e) => updateProblemSolution('problemTitle', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -199,7 +227,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.problemSolution.solutionTitle}
-                    onChange={(e) => setContent({...content, problemSolution: {...content.problemSolution, solutionTitle: e.target.value}})}
+                    onChange={(e) => updateProblemSolution('solutionTitle', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -207,7 +235,7 @@ export default function AdminPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Solution Closing Statement</label>
                   <textarea
                     value={content.problemSolution.solutionClosing}
-                    onChange={(e) => setContent({...content, problemSolution: {...content.problemSolution, solutionClosing: e.target.value}})}
+                    onChange={(e) => updateProblemSolution('solutionClosing', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                     rows={3}
                   />
@@ -224,7 +252,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.research.title}
-                    onChange={(e) => setContent({...content, research: {...content.research, title: e.target.value}})}
+                    onChange={(e) => updateResearch('title', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -233,7 +261,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.research.subtitle}
-                    onChange={(e) => setContent({...content, research: {...content.research, subtitle: e.target.value}})}
+                    onChange={(e) => updateResearch('subtitle', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -249,7 +277,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.purchase.buttonText}
-                    onChange={(e) => setContent({...content, purchase: {...content.purchase, buttonText: e.target.value}})}
+                    onChange={(e) => updatePurchase('buttonText', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -258,7 +286,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.purchase.companyName}
-                    onChange={(e) => setContent({...content, purchase: {...content.purchase, companyName: e.target.value}})}
+                    onChange={(e) => updatePurchase('companyName', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -267,7 +295,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.purchase.phone}
-                    onChange={(e) => setContent({...content, purchase: {...content.purchase, phone: e.target.value}})}
+                    onChange={(e) => updatePurchase('phone', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -276,7 +304,7 @@ export default function AdminPage() {
                   <input
                     type="email"
                     value={content.purchase.email}
-                    onChange={(e) => setContent({...content, purchase: {...content.purchase, email: e.target.value}})}
+                    onChange={(e) => updatePurchase('email', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -285,7 +313,7 @@ export default function AdminPage() {
                   <input
                     type="text"
                     value={content.purchase.copyright}
-                    onChange={(e) => setContent({...content, purchase: {...content.purchase, copyright: e.target.value}})}
+                    onChange={(e) => updatePurchase('copyright', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
