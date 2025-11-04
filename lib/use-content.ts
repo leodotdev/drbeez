@@ -10,8 +10,8 @@ export function useContent() {
   useEffect(() => {
     fetch('/api/content')
       .then(res => res.json())
-      .then((data: SiteContent) => {
-        setContent(data);
+      .then(data => {
+        setContent(data as SiteContent);
         setLoading(false);
       })
       .catch(err => {
