@@ -23,7 +23,7 @@ export default function AdminPage() {
     try {
       const response = await fetch('/api/content');
       if (response.ok) {
-        const data = await response.json();
+        const data = await response.json() as SiteContent;
         setContent(data);
       }
     } catch (error) {
