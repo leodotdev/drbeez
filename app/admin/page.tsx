@@ -38,27 +38,6 @@ export default function AdminPage() {
     }));
   };
 
-  const updateProblemSolution = (field: keyof SiteContent['problemSolution'], value: string) => {
-    setContent(prev => ({
-      ...prev,
-      problemSolution: { ...prev.problemSolution, [field]: value }
-    }));
-  };
-
-  const updateResearch = (field: keyof SiteContent['research'], value: string | string[]) => {
-    setContent(prev => ({
-      ...prev,
-      research: { ...prev.research, [field]: value }
-    }));
-  };
-
-  const updatePurchase = (field: keyof SiteContent['purchase'], value: string) => {
-    setContent(prev => ({
-      ...prev,
-      purchase: { ...prev.purchase, [field]: value }
-    }));
-  };
-
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (pin === '1011') {
@@ -157,164 +136,21 @@ export default function AdminPage() {
           )}
 
           <div className="space-y-8">
-            {/* Hero Section */}
-            <section className="border-b pb-8">
-              <h2 className="text-2xl font-semibold mb-4">Hero Section</h2>
+            {/* Main Content Section */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Page Content</h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Note: The current site displays hardcoded content. This admin panel maintains the content structure for future use.
+              </p>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Main Heading</label>
                   <input
                     type="text"
                     value={content.hero.title}
                     onChange={(e) => updateHero('title', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
-                  <input
-                    type="text"
-                    value={content.hero.subtitle}
-                    onChange={(e) => updateHero('subtitle', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                  <textarea
-                    value={content.hero.description}
-                    onChange={(e) => updateHero('description', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    rows={3}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Patent Info</label>
-                  <input
-                    type="text"
-                    value={content.hero.patent}
-                    onChange={(e) => updateHero('patent', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Developer</label>
-                  <input
-                    type="text"
-                    value={content.hero.developer}
-                    onChange={(e) => updateHero('developer', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* Problem/Solution Section */}
-            <section className="border-b pb-8">
-              <h2 className="text-2xl font-semibold mb-4">Problem/Solution Section</h2>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Problem Title</label>
-                  <input
-                    type="text"
-                    value={content.problemSolution.problemTitle}
-                    onChange={(e) => updateProblemSolution('problemTitle', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Solution Title</label>
-                  <input
-                    type="text"
-                    value={content.problemSolution.solutionTitle}
-                    onChange={(e) => updateProblemSolution('solutionTitle', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Solution Closing Statement</label>
-                  <textarea
-                    value={content.problemSolution.solutionClosing}
-                    onChange={(e) => updateProblemSolution('solutionClosing', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    rows={3}
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* Research Section */}
-            <section className="border-b pb-8">
-              <h2 className="text-2xl font-semibold mb-4">Research Section</h2>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                  <input
-                    type="text"
-                    value={content.research.title}
-                    onChange={(e) => updateResearch('title', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
-                  <input
-                    type="text"
-                    value={content.research.subtitle}
-                    onChange={(e) => updateResearch('subtitle', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* Purchase Section */}
-            <section className="border-b pb-8">
-              <h2 className="text-2xl font-semibold mb-4">Purchase Section</h2>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>
-                  <input
-                    type="text"
-                    value={content.purchase.buttonText}
-                    onChange={(e) => updatePurchase('buttonText', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                  <input
-                    type="text"
-                    value={content.purchase.companyName}
-                    onChange={(e) => updatePurchase('companyName', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                  <input
-                    type="text"
-                    value={content.purchase.phone}
-                    onChange={(e) => updatePurchase('phone', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    value={content.purchase.email}
-                    onChange={(e) => updatePurchase('email', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Copyright</label>
-                  <input
-                    type="text"
-                    value={content.purchase.copyright}
-                    onChange={(e) => updatePurchase('copyright', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="What makes Dr. BeeLeez blend smoker's supplement unique?"
                   />
                 </div>
               </div>
