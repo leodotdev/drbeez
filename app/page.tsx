@@ -1,18 +1,14 @@
 import Hero from '@/components/sections/Hero';
-import ProblemSolution from '@/components/sections/ProblemSolution';
-import Research from '@/components/sections/Research';
-import Purchase from '@/components/sections/Purchase';
+import PincodeGate from '@/components/PincodeGate';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <div className="border-b border-charcoal/20"></div>
-      <ProblemSolution />
-      <div className="border-b border-charcoal/20"></div>
-      <Research />
-      <div className="border-b border-charcoal/20"></div>
-      <Purchase />
-    </main>
+    <PincodeGate>
+      <main className="min-h-screen bg-royal-blue p-4 md:p-6 lg:p-8">
+        <div className="bg-white min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)]">
+          <Hero />
+        </div>
+      </main>
+    </PincodeGate>
   );
 }

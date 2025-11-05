@@ -61,7 +61,7 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin === '5555') {
+    if (pin === '1011') {
       setIsAuthenticated(true);
       sessionStorage.setItem('admin_auth', 'true');
       loadContent();

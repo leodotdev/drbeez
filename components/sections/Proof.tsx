@@ -3,10 +3,10 @@
 import { FileText, Presentation } from 'lucide-react';
 import { useContent } from '@/lib/use-content';
 
-export default function Research() {
+export default function Proof() {
   const { content } = useContent();
   return (
-    <section id="research" className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
+    <section id="proof" className="px-6 md:px-12 lg:px-24 py-24 md:py-32 lg:py-40 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Research Highlights */}
