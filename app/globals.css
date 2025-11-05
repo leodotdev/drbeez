@@ -49,7 +49,7 @@
   --color-charcoal: #1f2937;
 
   /* Custom fonts */
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-epilogue);
   --font-body: var(--font-inter);
 }
 
