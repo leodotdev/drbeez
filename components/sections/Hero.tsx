@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { FileText, Presentation } from 'lucide-react';
+import Image from "next/image";
+import { FileText, Presentation, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -22,17 +22,21 @@ export default function Hero() {
 
           {/* Content - Right Side */}
           <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-8">
-            <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight leading-tight">
+            <h1 className="text-royal-blue text-5xl font-bold tracking-tight leading-tight">
               What makes Dr. BeeLeez Blend Smoker's Supplement unique?
             </h1>
 
-            <div className="flex flex-col gap-6 font-[family-name:var(--font-body)] text-lg md:text-xl text-charcoal leading-relaxed">
+            <div className="flex flex-col gap-6 text-lg md:text-xl text-charcoal leading-relaxed">
               <p>
-                You need to know that tobacco smoking depletes you of specific vitamins, minerals and antioxidants.
+                You need to know that tobacco smoking depletes you of specific
+                vitamins, minerals and antioxidants.
               </p>
 
               <p>
-                Now, we can show multiple studies in the medical literature that restoring losses of specific vitamins, minerals and antioxidants gives the smoker a fighting chance for a healthier life and a longer life. This is a recovery and replenishment system.
+                Now, we can show multiple studies in the medical literature that
+                restoring losses of specific vitamins, minerals and antioxidants
+                gives the smoker a fighting chance for a healthier life and a
+                longer life. This is a recovery and replenishment system.
               </p>
 
               <p>
@@ -40,38 +44,41 @@ export default function Hero() {
               </p>
             </div>
 
-            <h2 className="text-royal-blue font-bold text-2xl md:text-3xl font-[family-name:var(--font-display)]">
+            <h2 className="text-royal-blue font-bold text-2xl md:text-3xl">
               See the proof!
             </h2>
 
             {/* Research Downloads - directly under "See the proof!" */}
             <div className="flex flex-col items-center lg:items-start gap-2.5">
-                {/* PDF Download */}
-                <a
-                  href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200 font-[family-name:var(--font-body)] text-sm"
-                >
-                  <FileText className="w-4 h-4 flex-shrink-0" />
-                  <span>Complete Abstracts of Nutrient Depletion Studies (PDF)</span>
-                </a>
+              {/* PDF Download */}
+              <a
+                href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
+                download
+                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200 text-sm"
+              >
+                <FileText className="w-4 h-4" />
+                <span>
+                  Complete Abstracts of Nutrient Depletion Studies (PDF)
+                </span>
+              </a>
 
-                {/* PPTX Download */}
-                <a
-                  href="/downloads/Powerpoint_Tob_Smoking_New_Perspective_allows_3-8-25.pptx"
-                  download
-                  className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200 font-[family-name:var(--font-body)] text-sm"
-                >
-                  <Presentation className="w-4 h-4 flex-shrink-0" />
-                  <span>Tobacco Smoking: A New Perspective (PPTX)</span>
-                </a>
-              </div>
+              {/* PPTX Download */}
+              <a
+                href="/downloads/Powerpoint_Tob_Smoking_New_Perspective_allows_3-8-25.pptx"
+                download
+                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200 text-sm"
+              >
+                <Presentation className="w-4 h-4" />
+                <span>Tobacco Smoking: A New Perspective (PPTX)</span>
+              </a>
+            </div>
 
             <a
-              href={process.env.NEXT_PUBLIC_PURCHASE_URL || '#'}
-              className="font-[family-name:var(--font-body)] bg-royal-blue text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-royal-blue/90 transition-all duration-200 shadow-lg w-full sm:w-auto text-center"
+              href={process.env.NEXT_PUBLIC_PURCHASE_URL || "#"}
+              className="inline-flex items-center gap-2 bg-royal-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-royal-blue/90 transition-all duration-200 w-full sm:w-auto justify-center"
             >
-              Purchase Direct from Manufacturer
+              <span>Purchase Direct from Manufacturer</span>
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
