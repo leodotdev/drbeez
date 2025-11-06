@@ -58,7 +58,8 @@ export default function Hero() {
               >
                 <FileText className="w-4 h-4" />
                 <span>
-                  Complete Abstracts of Nutrient Depletion Studies (PDF)
+                  Endorsement and Complete Abstracts of Nutrient Depletion
+                  Studies (PDF)
                 </span>
               </a>
 
