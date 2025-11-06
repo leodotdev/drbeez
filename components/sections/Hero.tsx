@@ -5,7 +5,7 @@ import { FileText, Presentation } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16 lg:py-20 bg-white h-full flex items-center">
+    <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto w-full">
         {/* Hero Content */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-12 items-center">
@@ -21,32 +21,31 @@ export default function Hero() {
           </div>
 
           {/* Content - Right Side */}
-          <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-            <div className="space-y-6">
-              <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
-                What makes Dr. BeeLeez Blend Smoker's Supplement unique?
-              </h1>
+          <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-8">
+            <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight leading-tight">
+              What makes Dr. BeeLeez Blend Smoker's Supplement unique?
+            </h1>
 
-              <div className="space-y-5 font-[family-name:var(--font-body)] text-base md:text-lg text-charcoal leading-relaxed">
-                <p>
-                  You need to know that tobacco smoking depletes you of specific vitamins, minerals and antioxidants.
-                </p>
+            <div className="flex flex-col gap-6 font-[family-name:var(--font-body)] text-lg md:text-xl text-charcoal leading-relaxed">
+              <p>
+                You need to know that tobacco smoking depletes you of specific vitamins, minerals and antioxidants.
+              </p>
 
-                <p>
-                  Now, we can show multiple studies in the medical literature that restoring losses of specific vitamins, minerals and antioxidants gives the smoker a fighting chance for a healthier life and a longer life. This is a recovery and replenishment system.
-                </p>
+              <p>
+                Now, we can show multiple studies in the medical literature that restoring losses of specific vitamins, minerals and antioxidants gives the smoker a fighting chance for a healthier life and a longer life. This is a recovery and replenishment system.
+              </p>
 
-                <p>
-                  Some studies show a decrease in the number of cigarettes smoked.
-                </p>
-              </div>
+              <p>
+                Some studies show a decrease in the number of cigarettes smoked.
+              </p>
+            </div>
 
-              <h2 className="text-royal-blue font-bold text-2xl md:text-3xl font-[family-name:var(--font-display)] mt-6">
-                See the proof!
-              </h2>
+            <h2 className="text-royal-blue font-bold text-2xl md:text-3xl font-[family-name:var(--font-display)]">
+              See the proof!
+            </h2>
 
-              {/* Research Downloads - directly under "See the proof!" */}
-              <div className="flex flex-col items-center lg:items-start gap-2.5 mt-5">
+            {/* Research Downloads - directly under "See the proof!" */}
+            <div className="flex flex-col items-center lg:items-start gap-2.5">
                 {/* PDF Download */}
                 <a
                   href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
@@ -67,11 +66,10 @@ export default function Hero() {
                   <span>Tobacco Smoking: A New Perspective (PPTX)</span>
                 </a>
               </div>
-            </div>
 
             <a
               href={process.env.NEXT_PUBLIC_PURCHASE_URL || '#'}
-              className="font-[family-name:var(--font-body)] bg-royal-blue text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-royal-blue/90 transition-all duration-200 shadow-lg w-full sm:w-auto text-center mt-8"
+              className="font-[family-name:var(--font-body)] bg-royal-blue text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-royal-blue/90 transition-all duration-200 shadow-lg w-full sm:w-auto text-center"
             >
               Purchase Direct from Manufacturer
             </a>

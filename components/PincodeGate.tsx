@@ -17,7 +17,7 @@ export default function PincodeGate({ children }: { children: React.ReactNode })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pincode === '1011') {
+    if (pincode === '4444') {
       setIsUnlocked(true);
       localStorage.setItem('siteUnlocked', 'true');
       setError(false);
