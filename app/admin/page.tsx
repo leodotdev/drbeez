@@ -136,11 +136,11 @@ export default function AdminPage() {
           )}
 
           <div className="space-y-8">
-            {/* Main Content Section */}
+            {/* Hero Section */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Page Content</h2>
+              <h2 className="text-2xl font-semibold mb-4">Hero Section</h2>
               <p className="text-sm text-gray-600 mb-6">
-                Note: The current site displays hardcoded content. This admin panel maintains the content structure for future use.
+                Edit the main hero section content that appears at the top of the page.
               </p>
               <div className="space-y-4">
                 <div>
@@ -150,7 +150,62 @@ export default function AdminPage() {
                     value={content.hero.title}
                     onChange={(e) => updateHero('title', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    placeholder="What makes Dr. BeeLeez blend smoker's supplement unique?"
+                    placeholder="What makes Dr. BeeLeez Blend Smoker's Supplement unique?"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Paragraph 1</label>
+                  <textarea
+                    value={content.hero.paragraph1}
+                    onChange={(e) => updateHero('paragraph1', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    rows={2}
+                    placeholder="Tobacco smoking depletes you of specific vitamins..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Paragraph 2</label>
+                  <textarea
+                    value={content.hero.paragraph2}
+                    onChange={(e) => updateHero('paragraph2', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    rows={3}
+                    placeholder="Multiple medical studies show that restoring..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Paragraph 3</label>
+                  <textarea
+                    value={content.hero.paragraph3}
+                    onChange={(e) => updateHero('paragraph3', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    rows={2}
+                    placeholder="This supplement is a recovery and replenishment system."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Paragraph 4</label>
+                  <textarea
+                    value={content.hero.paragraph4}
+                    onChange={(e) => updateHero('paragraph4', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    rows={2}
+                    placeholder="Additional studies show a decrease in the number of cigarettes smoked."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Proof Section Heading</label>
+                  <input
+                    type="text"
+                    value={content.hero.proofHeading}
+                    onChange={(e) => updateHero('proofHeading', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="See the proof!"
                   />
                 </div>
               </div>

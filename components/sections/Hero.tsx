@@ -28,19 +28,19 @@ export default function Hero() {
 
             <div className="flex flex-col gap-6 text-lg md:text-xl text-charcoal leading-relaxed">
               <p>
-                You need to know that tobacco smoking depletes you of specific
-                vitamins, minerals and antioxidants.
+                Tobacco smoking depletes you of specific vitamins, minerals and antioxidants.
               </p>
 
               <p>
-                Now, we can show multiple studies in the medical literature that
-                restoring losses of specific vitamins, minerals and antioxidants
-                gives the smoker a fighting chance for a healthier life and a
-                longer life. This is a recovery and replenishment system.
+                Multiple medical studies show that restoring the loss of specific vitamins, minerals and antioxidants gives smokers a fighting chance for a healthier and longer life.
               </p>
 
               <p>
-                Some studies show a decrease in the number of cigarettes smoked.
+                This supplement is a recovery and replenishment system.
+              </p>
+
+              <p>
+                Additional studies show a decrease in the number of cigarettes smoked.
               </p>
             </div>
 

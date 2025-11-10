@@ -1,10 +1,11 @@
 export interface SiteContent {
   hero: {
     title: string;
-    subtitle: string;
-    description: string;
-    patent: string;
-    developer: string;
+    paragraph1: string;
+    paragraph2: string;
+    paragraph3: string;
+    paragraph4: string;
+    proofHeading: string;
   };
   problemSolution: {
     problemTitle: string;
@@ -39,11 +40,12 @@ export interface SiteContent {
 
 export const defaultContent: SiteContent = {
   hero: {
-    title: "Dr. Bee Leez Blend",
-    subtitle: "Smoker's Supplement™",
-    description: "Scientifically Formulated to Replace Vital Nutrients Depleted by Tobacco Smoking",
-    patent: "Based on U.S. Patent #8,889,194",
-    developer: "Developed by Dr. Harlan Bieley, MD, MS",
+    title: "What makes Dr. BeeLeez Blend Smoker's Supplement unique?",
+    paragraph1: "Tobacco smoking depletes you of specific vitamins, minerals and antioxidants.",
+    paragraph2: "Multiple medical studies show that restoring the loss of specific vitamins, minerals and antioxidants gives smokers a fighting chance for a healthier and longer life.",
+    paragraph3: "This supplement is a recovery and replenishment system.",
+    paragraph4: "Additional studies show a decrease in the number of cigarettes smoked.",
+    proofHeading: "See the proof!",
   },
   problemSolution: {
     problemTitle: "Tobacco Depletes Your Body",
