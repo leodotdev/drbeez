@@ -2,10 +2,27 @@
 
 import Image from "next/image";
 import { FileText, Presentation, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { defaultContent, type SiteContent } from "@/lib/default-content";
 
 export default function Hero() {
   const [quantity, setQuantity] = useState(1);
+  const [content, setContent] = useState<SiteContent>(defaultContent);
+
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (response.ok) {
+          const data = await response.json() as SiteContent;
+          setContent(data);
+        }
+      } catch (error) {
+        console.error('Failed to load content:', error);
+      }
+    };
+    loadContent();
+  }, []);
 
   // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
   const calculateDisplayPrice = (qty: number) => {
@@ -45,31 +62,18 @@ export default function Hero() {
           {/* Content - Right Side */}
           <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-8">
             <h1 className="text-royal-blue text-3xl font-bold tracking-tight leading-tight">
-              What makes Dr. BeeLeez Blend Smoker's Supplement unique?
+              {content.hero.title}
             </h1>
 
             <div className="flex flex-col gap-6 text-charcoal leading-relaxed">
-              <p>
-                Tobacco smoking depletes you of specific vitamins, minerals and
-                antioxidants.
-              </p>
-
-              <p>
-                Multiple medical studies show that restoring the loss of
-                specific vitamins, minerals and antioxidants gives smokers a
-                fighting chance for a healthier and longer life.
-              </p>
-
-              <p>This supplement is a recovery and replenishment system.</p>
-
-              <p>
-                Additional studies show a decrease in the number of cigarettes
-                smoked.
-              </p>
+              <p>{content.hero.paragraph1}</p>
+              <p>{content.hero.paragraph2}</p>
+              <p>{content.hero.paragraph3}</p>
+              <p>{content.hero.paragraph4}</p>
             </div>
 
             <h2 className="text-royal-blue font-bold text-3xl">
-              See the proof!
+              {content.hero.proofHeading}
             </h2>
 
             {/* Research Downloads - directly under "See the proof!" */}
@@ -81,10 +85,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
                 <FileText className="w-4 h-4" />
-                <span>
-                  Endorsement and Complete Abstracts of Nutrient Depletion
-                  Studies (PDF)
-                </span>
+                <span>{content.hero.pdfLinkText}</span>
               </a>
 
               {/* PPTX Download */}
@@ -94,7 +95,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
                 <Presentation className="w-4 h-4" />
-                <span>Tobacco Smoking: A New Perspective (PPTX)</span>
+                <span>{content.hero.pptxLinkText}</span>
               </a>
             </div>
 
@@ -111,7 +112,7 @@ export default function Hero() {
               <div className="flex flex-col items-center lg:items-start gap-4">
                 <div className="flex items-center gap-4">
                   <label htmlFor="qty" className="text-charcoal font-medium">
-                    Qty:
+                    {content.hero.qtyLabel}
                   </label>
                   <input
                     type="number"
@@ -129,16 +130,16 @@ export default function Hero() {
 
                 <div className="flex items-center gap-3">
                   <div className="text-charcoal font-semibold">
-                    Price: ${displayPrice.toFixed(2)}
+                    {content.hero.priceLabel} ${displayPrice.toFixed(2)}
                   </div>
                   {quantity >= 12 && (
                     <div className="text-royal-blue font-medium">
-                      Save 20%!
+                      {content.hero.saveText12Plus}
                     </div>
                   )}
                   {quantity >= 3 && quantity < 12 && (
                     <div className="text-royal-blue font-medium">
-                      Save 10%!
+                      {content.hero.saveText3Plus}
                     </div>
                   )}
                 </div>
@@ -147,7 +148,7 @@ export default function Hero() {
                   type="submit"
                   className="inline-flex items-center gap-2 bg-royal-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-royal-blue/90 transition-all duration-200 w-full sm:w-auto justify-center"
                 >
-                  <span>Add to Shopping Cart</span>
+                  <span>{content.hero.addToCartButtonText}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

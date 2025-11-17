@@ -6,6 +6,13 @@ export interface SiteContent {
     paragraph3: string;
     paragraph4: string;
     proofHeading: string;
+    pdfLinkText: string;
+    pptxLinkText: string;
+    qtyLabel: string;
+    priceLabel: string;
+    saveText3Plus: string;
+    saveText12Plus: string;
+    addToCartButtonText: string;
   };
   problemSolution: {
     problemTitle: string;
@@ -46,6 +53,13 @@ export const defaultContent: SiteContent = {
     paragraph3: "This supplement is a recovery and replenishment system.",
     paragraph4: "Additional studies show a decrease in the number of cigarettes smoked.",
     proofHeading: "See the proof!",
+    pdfLinkText: "Endorsement and Complete Abstracts of Nutrient Depletion Studies (PDF)",
+    pptxLinkText: "Tobacco Smoking: A New Perspective (PPTX)",
+    qtyLabel: "Qty:",
+    priceLabel: "Price:",
+    saveText3Plus: "Save 10%",
+    saveText12Plus: "Save 20%",
+    addToCartButtonText: "Add to Shopping Cart",
   },
   problemSolution: {
     problemTitle: "Tobacco Depletes Your Body",

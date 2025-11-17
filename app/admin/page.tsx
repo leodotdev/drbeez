@@ -208,6 +208,87 @@ export default function AdminPage() {
                     placeholder="See the proof!"
                   />
                 </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">PDF Link Text</label>
+                  <input
+                    type="text"
+                    value={content.hero.pdfLinkText}
+                    onChange={(e) => updateHero('pdfLinkText', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="Endorsement and Complete Abstracts..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">PowerPoint Link Text</label>
+                  <input
+                    type="text"
+                    value={content.hero.pptxLinkText}
+                    onChange={(e) => updateHero('pptxLinkText', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="Tobacco Smoking: A New Perspective (PPTX)"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Quantity Label</label>
+                    <input
+                      type="text"
+                      value={content.hero.qtyLabel}
+                      onChange={(e) => updateHero('qtyLabel', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Qty:"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Price Label</label>
+                    <input
+                      type="text"
+                      value={content.hero.priceLabel}
+                      onChange={(e) => updateHero('priceLabel', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Price:"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Save Text (3+ bottles)</label>
+                    <input
+                      type="text"
+                      value={content.hero.saveText3Plus}
+                      onChange={(e) => updateHero('saveText3Plus', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Save 10%"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Save Text (12+ bottles)</label>
+                    <input
+                      type="text"
+                      value={content.hero.saveText12Plus}
+                      onChange={(e) => updateHero('saveText12Plus', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Save 20%"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Add to Cart Button Text</label>
+                  <input
+                    type="text"
+                    value={content.hero.addToCartButtonText}
+                    onChange={(e) => updateHero('addToCartButtonText', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="Add to Shopping Cart"
+                  />
+                </div>
               </div>
             </section>
           </div>
