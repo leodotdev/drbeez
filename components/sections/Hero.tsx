@@ -7,18 +7,21 @@ import { useState } from "react";
 export default function Hero() {
   const [quantity, setQuantity] = useState(1);
 
-  // Pricing: 1=$50, 2=$100, 3=$135, 4-19=$45 each, 20+=$40 each
+  // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
   const calculateDisplayPrice = (qty: number) => {
     if (qty <= 0) return 0;
-    if (qty === 1) return 50;
-    if (qty === 2) return 100;
-    if (qty === 3) return 135;
-    if (qty < 20) {
-      // For 4-19: $135 base (first 3) + $45 for each additional
-      return 135 + (qty - 3) * 45;
+    const basePrice = 50;
+
+    if (qty >= 12) {
+      // 20% off for a box of a dozen or more
+      return qty * basePrice * 0.8;
+    } else if (qty >= 3) {
+      // 10% off for 3+ bottles
+      return qty * basePrice * 0.9;
+    } else {
+      // Regular price for 1-2 bottles
+      return qty * basePrice;
     }
-    // For 20+: $40 per item
-    return qty * 40;
   };
 
   const displayPrice = calculateDisplayPrice(quantity);
@@ -128,9 +131,14 @@ export default function Hero() {
                   <div className="text-charcoal font-semibold">
                     Price: ${displayPrice.toFixed(2)}
                   </div>
-                  {quantity >= 3 && (
+                  {quantity >= 12 && (
                     <div className="text-royal-blue font-medium">
-                      Save ${(quantity * 50 - displayPrice).toFixed(2)}!
+                      Save 20%!
+                    </div>
+                  )}
+                  {quantity >= 3 && quantity < 12 && (
+                    <div className="text-royal-blue font-medium">
+                      Save 10%!
                     </div>
                   )}
                 </div>
