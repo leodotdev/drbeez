@@ -47,9 +47,9 @@ export default function Hero() {
     <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto w-full">
         {/* Hero Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr] gap-8 lg:gap-12 items-center">
           {/* Product Image - Left Side */}
-          <div className="relative w-full aspect-square max-w-lg mx-auto lg:mx-0">
+          <div className="relative w-full aspect-square max-w-[737px] mx-auto lg:mx-0">
             <Image
               src="/hero-1.png"
               alt="Dr. Bee Leez Blend Smoker's Supplement"
