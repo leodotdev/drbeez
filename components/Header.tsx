@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Globe } from "lucide-react";
+import { Globe, ChevronDown } from "lucide-react";
 
 // Declare Google Translate types
 declare global {
@@ -85,20 +85,23 @@ export default function Header() {
           {/* Language Switcher */}
           <div className="flex items-center gap-3">
             <Globe className="w-5 h-5 text-royal-blue" />
-            <select
-              value={selectedLanguage}
-              onChange={(e) => handleLanguageChange(e.target.value)}
-              className="px-3 py-2 border-2 border-charcoal/20 rounded-md text-charcoal focus:border-royal-blue focus:outline-none min-w-[150px]"
-            >
-              <option value="en">English</option>
-              <option value="it">Italian</option>
-              <option value="de">German</option>
-              <option value="es">Spanish</option>
-              <option value="ar">Arabic</option>
-              <option value="he">Hebrew</option>
-              <option value="ja">Japanese</option>
-              <option value="zh-CN">Chinese</option>
-            </select>
+            <div className="relative">
+              <select
+                value={selectedLanguage}
+                onChange={(e) => handleLanguageChange(e.target.value)}
+                className="appearance-none px-3 py-2 pr-10 border-2 border-charcoal/20 rounded-md text-charcoal focus:border-royal-blue focus:outline-none min-w-[150px] bg-white cursor-pointer"
+              >
+                <option value="en">English</option>
+                <option value="it">Italian</option>
+                <option value="de">German</option>
+                <option value="es">Spanish</option>
+                <option value="ar">Arabic</option>
+                <option value="he">Hebrew</option>
+                <option value="ja">Japanese</option>
+                <option value="zh-CN">Chinese</option>
+              </select>
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal pointer-events-none" />
+            </div>
             {/* Hidden Google Translate widget */}
             <div id="google_translate_element" className="hidden"></div>
           </div>
