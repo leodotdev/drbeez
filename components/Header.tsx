@@ -63,7 +63,7 @@ export default function Header() {
     // Trigger Google Translate
     const selectElement = document.querySelector(
       ".goog-te-combo"
-    ) as HTMLSelectElement;
+    ) as unknown as HTMLSelectElement;
 
     if (selectElement) {
       selectElement.value = langCode;
