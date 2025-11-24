@@ -33,7 +33,7 @@ export default function Header() {
         new window.google.translate.TranslateElement(
           {
             pageLanguage: "en",
-            includedLanguages: "en,it,de", // English, Italian, German
+            includedLanguages: "en,it,de,es,ar,he,ja,zh-CN", // English, Italian, German, Spanish, Arabic, Hebrew, Japanese, Chinese
             layout: 0, // Simple layout
             autoDisplay: false,
           },
@@ -93,6 +93,11 @@ export default function Header() {
               <option value="en">English</option>
               <option value="it">Italian</option>
               <option value="de">German</option>
+              <option value="es">Spanish</option>
+              <option value="ar">Arabic</option>
+              <option value="he">Hebrew</option>
+              <option value="ja">Japanese</option>
+              <option value="zh-CN">Chinese</option>
             </select>
             {/* Hidden Google Translate widget */}
             <div id="google_translate_element" className="hidden"></div>
