@@ -10,12 +10,17 @@ export default function Home() {
   const [content, setContent] = useState<SiteContent>(defaultContent);
 
   useEffect(() => {
-    fetch('/api/content')
-      .then(res => res.ok ? res.json() : Promise.reject())
-      .then(data => {
-        if (data?.hero?.title) setContent(data as SiteContent);
-      })
-      .catch(() => {}); // Keep default content on error
+    const loadContent = async () => {
+      try {
+        const res = await fetch('/api/content');
+        if (!res.ok) return;
+        const data = await res.json() as SiteContent;
+        if (data?.hero?.title) setContent(data);
+      } catch {
+        // Keep default content on error
+      }
+    };
+    loadContent();
   }, []);
 
   const getPrice = (qty: number) => {
