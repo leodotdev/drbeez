@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     fetch('/api/content')
       .then(res => res.json())
-      .then((data: SiteContent) => setContent(data))
+      .then(data => setContent(data as SiteContent))
       .catch(() => {}); // Keep default content on error
   }, []);
 
