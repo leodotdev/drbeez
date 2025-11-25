@@ -72,7 +72,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-charcoal/10 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-charcoal/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-4">
         <div className="flex items-center justify-between">
           {/* Logo/Brand */}
@@ -89,7 +89,7 @@ export default function Header() {
               <select
                 value={selectedLanguage}
                 onChange={(e) => handleLanguageChange(e.target.value)}
-                className="appearance-none px-3 py-2 pr-10 border-2 border-charcoal/20 rounded-md text-charcoal focus:border-royal-blue focus:outline-none min-w-[150px] bg-white cursor-pointer"
+                className="appearance-none px-3 py-2 pr-10 border border-charcoal/20 rounded text-charcoal focus:border-royal-blue focus:outline-none min-w-[150px] bg-white cursor-pointer"
               >
                 <option value="en">English</option>
                 <option value="it">Italian</option>
