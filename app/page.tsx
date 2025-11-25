@@ -11,8 +11,10 @@ export default function Home() {
 
   useEffect(() => {
     fetch('/api/content')
-      .then(res => res.json())
-      .then(data => setContent(data as SiteContent))
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(data => {
+        if (data?.hero?.title) setContent(data as SiteContent);
+      })
       .catch(() => {}); // Keep default content on error
   }, []);
 
