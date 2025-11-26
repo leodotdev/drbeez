@@ -60,15 +60,22 @@ export default function Header() {
   const handleLanguageChange = (langCode: string) => {
     setSelectedLanguage(langCode);
 
-    // Trigger Google Translate
-    const selectElement = document.querySelector(
-      ".goog-te-combo"
-    ) as unknown as HTMLSelectElement;
+    // Trigger Google Translate with retry
+    const triggerTranslate = (attempts = 0) => {
+      const selectElement = document.querySelector(
+        ".goog-te-combo"
+      ) as HTMLSelectElement | null;
 
-    if (selectElement) {
-      selectElement.value = langCode;
-      selectElement.dispatchEvent(new Event("change"));
-    }
+      if (selectElement) {
+        selectElement.value = langCode;
+        selectElement.dispatchEvent(new Event("change"));
+      } else if (attempts < 10) {
+        // Retry after 200ms if element not ready
+        setTimeout(() => triggerTranslate(attempts + 1), 200);
+      }
+    };
+
+    triggerTranslate();
   };
 
   return (
