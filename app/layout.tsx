@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { I18nProvider } from "@/lib/i18n";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -36,8 +37,10 @@ export default function RootLayout({
       <body
         className={`${epilogue.variable} ${inter.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <I18nProvider>
+          <Header />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

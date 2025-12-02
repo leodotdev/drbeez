@@ -2,26 +2,12 @@
 
 import Image from "next/image";
 import { ArrowRight, FileText } from "lucide-react";
-import { useState, useEffect } from "react";
-import { defaultContent, type SiteContent } from "@/lib/default-content";
+import { useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 export default function Home() {
   const [quantity, setQuantity] = useState(1);
-  const [content, setContent] = useState<SiteContent>(defaultContent);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      try {
-        const res = await fetch('/api/content');
-        if (!res.ok) return;
-        const data = await res.json() as SiteContent;
-        if (data?.hero?.title) setContent(data);
-      } catch {
-        // Keep default content on error
-      }
-    };
-    loadContent();
-  }, []);
+  const { t: content } = useI18n();
 
   const getPrice = (qty: number) => {
     const base = 50;
