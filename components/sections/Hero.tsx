@@ -2,12 +2,20 @@
 
 import Image from "next/image";
 import { FileText, Presentation, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { defaultContent, type SiteContent } from "@/lib/default-content";
+
+const heroImages = [
+  "/hero-1.png",
+  "/hero-2.jpeg",
+  "/hero-3.jpeg",
+  "/hero-4.jpeg",
+];
 
 export default function Hero() {
   const [quantity, setQuantity] = useState(1);
   const [content, setContent] = useState<SiteContent>(defaultContent);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -22,6 +30,19 @@ export default function Hero() {
       }
     };
     loadContent();
+  }, []);
+
+  // Autoplay carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToImage = useCallback((index: number) => {
+    setCurrentImageIndex(index);
   }, []);
 
   // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
@@ -48,15 +69,42 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto w-full">
         {/* Hero Content */}
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr] gap-8 lg:gap-12 items-center">
-          {/* Product Image - Left Side */}
-          <div className="relative w-full aspect-square max-w-[737px] mx-auto lg:mx-0">
-            <Image
-              src="/hero-1.png"
-              alt="Dr. Bee Leez Blend Smoker's Supplement"
-              fill
-              className="object-contain"
-              priority
-            />
+          {/* Product Image Carousel - Left Side */}
+          <div className="flex flex-col items-center gap-4 max-w-[737px] mx-auto lg:mx-0">
+            <div className="relative w-full aspect-square">
+              {heroImages.map((src, index) => (
+                <div
+                  key={src}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    index === currentImageIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <Image
+                    src={src}
+                    alt={`Dr. Bee Leez Blend - Image ${index + 1}`}
+                    fill
+                    className="object-contain"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Carousel Indicators */}
+            <div className="flex gap-3 bg-gray-100 px-4 py-2 rounded-full">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-royal-blue scale-125"
+                      : "bg-charcoal/30 hover:bg-charcoal/50"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Content - Right Side */}

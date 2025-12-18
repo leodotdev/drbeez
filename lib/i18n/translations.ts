@@ -1,6 +1,6 @@
 import type { SiteContent } from "../default-content";
 
-export type Language = "en" | "it" | "de" | "es" | "ar" | "he" | "ja" | "zh";
+export type Language = "en" | "fr" | "it" | "de" | "es" | "ar" | "he" | "ja" | "zh";
 
 export interface LanguageOption {
   code: Language;
@@ -10,6 +10,7 @@ export interface LanguageOption {
 
 export const LANGUAGES: LanguageOption[] = [
   { code: "en", label: "English", dir: "ltr" },
+  { code: "fr", label: "Français", dir: "ltr" },
   { code: "it", label: "Italiano", dir: "ltr" },
   { code: "de", label: "Deutsch", dir: "ltr" },
   { code: "es", label: "Español", dir: "ltr" },
@@ -79,6 +80,67 @@ export const translations: Record<Language, SiteContent> = {
       warningText: "WARNING: Tobacco smoking can lead to cancer and other health risks. DO NOT use this product as an excuse to start or continue smoking.",
       disclaimerText: "† These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use if you have any medical conditions or take medications.",
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.",
+    },
+  },
+  fr: {
+    hero: {
+      title: "Qu'est-ce qui rend le supplément pour fumeurs Dr. BeeLeez Blend unique ?",
+      paragraph1: "Le tabagisme épuise votre corps en vitamines, minéraux et antioxydants spécifiques.",
+      paragraph2: "De nombreuses études médicales montrent que la restauration des vitamines, minéraux et antioxydants perdus donne aux fumeurs une vraie chance de vivre plus longtemps et en meilleure santé.",
+      paragraph3: "Ce supplément est un système de récupération et de reconstitution.",
+      paragraph4: "Des études supplémentaires montrent une diminution du nombre de cigarettes fumées.",
+      proofHeading: "Voyez les preuves !",
+      pdfLinkText: "Approbation et résumés complets des études sur l'épuisement des nutriments (PDF)",
+      pptxLinkText: "Tabagisme : une nouvelle perspective (PPTX)",
+      qtyLabel: "Qté :",
+      priceLabel: "Prix :",
+      saveText3Plus: "Économisez 10%",
+      saveText12Plus: "Économisez 20%",
+      addToCartButtonText: "Ajouter au panier",
+    },
+    problemSolution: {
+      problemTitle: "Le tabac épuise votre corps",
+      problemDescription: "Fumer provoque un épuisement immédiat et mesurable des nutriments essentiels :",
+      problemList: [
+        "Antioxydants (Vitamines C, E)",
+        "Vitamines B (B2, B6, B12, Folate)",
+        "Minéraux essentiels (Magnésium, Sélénium)",
+      ],
+      problemQuote: "Toute exposition à la fumée de tabac cause des dommages immédiats à votre corps.",
+      problemQuoteAuthor: "Médecin général des États-Unis",
+      solutionTitle: "La reconstitution fonctionne",
+      solutionDescription: "Plus de 100 études évaluées par des pairs démontrent que le remplacement de ces nutriments :",
+      solutionList: [
+        "Réduit les marqueurs de stress oxydatif de 11 à 17%",
+        "Soutient la santé cardiovasculaire",
+        "Protège la fonction pulmonaire",
+        "Aide aux efforts de réduction du tabagisme",
+      ],
+      solutionClosing: "Dr. Bee Leez Blend fournit des doses thérapeutiques de chaque nutriment épuisé dans une formule protégée par brevet.",
+    },
+    research: {
+      title: "Formulation fondée sur la science",
+      subtitle: "Basée sur des recherches cliniques approfondies :",
+      highlights: [
+        "Étude européenne avec plus de 500 000 participants : les niveaux de vitamine B6 sont inversement associés au risque de cancer du poumon",
+        "La N-Acétylcystéine a démontré une réduction de la consommation de cigarettes chez les personnes dépendantes à la nicotine",
+        "La supplémentation en antioxydants a prévenu l'hypertrophie cardiaque lors de l'exposition à la fumée de cigarette",
+        "La vitamine C améliore nettement la fonction endothéliale chez les fumeurs chroniques",
+        "Le magnésium à haute dose a significativement réduit le nombre de cigarettes fumées",
+      ],
+      highlightsFooter: "Plus de 100 études évaluées par des pairs soutiennent cette approche",
+      downloadsTitle: "Télécharger la recherche",
+    },
+    purchase: {
+      buttonText: "Acheter auprès du fabricant",
+      companyName: "Dr. Bee Leez Products",
+      address: "11380 Prosperity Farms Road, #114\nPalm Beach Gardens, FL 33410",
+      phone: "561-842-7422",
+      email: "ask@hllmc.com",
+      warningTitle: "Informations de sécurité importantes",
+      warningText: "AVERTISSEMENT : Le tabagisme peut entraîner le cancer et d'autres risques pour la santé. N'utilisez PAS ce produit comme excuse pour commencer ou continuer à fumer.",
+      disclaimerText: "† Ces déclarations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une maladie. Consultez votre professionnel de santé avant utilisation si vous avez des problèmes de santé ou prenez des médicaments.",
+      copyright: "© 2019-2025 Harlan Bieley, MD, MS. Tous droits réservés.",
     },
   },
   de: {
