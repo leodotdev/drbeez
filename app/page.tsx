@@ -44,7 +44,7 @@ export default function Home() {
       <div className="flex-1 flex flex-col lg:flex-row max-w-6xl mx-auto w-full px-6 py-8 lg:py-0">
         {/* Left: Product Carousel */}
         <div className="lg:flex-1 flex flex-col items-center justify-center py-8 lg:py-0 gap-4">
-          <div className="w-72 h-72 lg:w-[500px] lg:h-[500px] relative">
+          <div className="w-[360px] h-[360px] lg:w-[625px] lg:h-[625px] relative">
             {heroImages.map((src, index) => (
               <div
                 key={src}
