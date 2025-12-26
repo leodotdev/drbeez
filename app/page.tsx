@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import { ArrowRight, FileText } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useI18n } from "@/lib/i18n";
 
 const heroImages = [
-  "/hero-1.png",
-  "/hero-2.jpeg",
-  "/hero-3.jpeg",
-  "/hero-4.jpeg",
+  "/1 Background Removed.png",
+  "/2-1 Large Background Removed.png",
+  "/3-1 Large Background Removed.png",
+  "/4-1 Large Background Removed.png",
 ];
 
 export default function Home() {
@@ -21,13 +21,10 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentImageIndex]);
 
-  const goToImage = useCallback((index: number) => {
-    setCurrentImageIndex(index);
-  }, []);
 
   const getPrice = (qty: number) => {
     const base = 50;
@@ -44,7 +41,7 @@ export default function Home() {
       <div className="flex-1 flex flex-col lg:flex-row max-w-6xl mx-auto w-full px-6 py-8 lg:py-0">
         {/* Left: Product Carousel */}
         <div className="lg:flex-1 flex flex-col items-center justify-center py-8 lg:py-0 gap-4">
-          <div className="w-[360px] h-[360px] lg:w-[625px] lg:h-[625px] relative">
+          <div className="w-[550px] h-[550px] lg:w-[700px] lg:h-[700px] relative">
             {heroImages.map((src, index) => (
               <div
                 key={src}
@@ -56,19 +53,20 @@ export default function Home() {
                   src={src}
                   alt={`Dr. Bee Leez Blend - Image ${index + 1}`}
                   fill
-                  className="object-contain"
+                  className={`object-contain ${index === 0 || index === 3 ? "scale-[1.32]" : "scale-[1.2]"}`}
                   priority={index === 0}
                 />
               </div>
             ))}
           </div>
           {/* Carousel Indicators */}
-          <div className="flex gap-3 bg-gray-100 px-4 py-2 rounded-full">
+          <div className="flex gap-3 bg-gray-100 px-4 py-2 rounded-full z-10">
             {heroImages.map((_, index) => (
               <button
                 key={index}
-                onClick={() => goToImage(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                type="button"
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
                   index === currentImageIndex
                     ? "bg-royal-blue scale-125"
                     : "bg-charcoal/30 hover:bg-charcoal/50"
