@@ -24,7 +24,7 @@ export default function Header() {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as Language)}
-                className="appearance-none px-3 py-2 pr-10 border border-charcoal/20 rounded text-charcoal bg-white cursor-pointer hover:border-royal-blue/50 focus:border-royal-blue focus:outline-none min-w-[140px] transition-colors"
+                className="appearance-none px-5 py-2 pr-10 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] bg-white cursor-pointer hover:border-royal-blue hover:text-royal-blue focus:border-royal-blue focus:outline-none min-w-[140px] transition-all duration-200"
               >
                 {LANGUAGES.map((lang) => (
                   <option key={lang.code} value={lang.code}>

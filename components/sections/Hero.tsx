@@ -1,36 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { FileText, Presentation, ArrowRight } from "lucide-react";
+import { FileText, Presentation, ArrowRight, Stethoscope, X } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
-import { defaultContent, type SiteContent } from "@/lib/default-content";
+import { useI18n } from "@/lib/i18n";
 
 const heroImages = [
-  "/hero-1.png",
-  "/hero-2.jpeg",
-  "/hero-3.jpeg",
-  "/hero-4.jpeg",
+  "/1 Background Removed.png",
+  "/2-1 Large Background Removed.png",
+  "/3-1 Large Background Removed.png",
+  "/4-1 Large Background Removed.png",
 ];
 
 export default function Hero() {
   const [quantity, setQuantity] = useState(1);
-  const [content, setContent] = useState<SiteContent>(defaultContent);
+  const { t: content } = useI18n();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      try {
-        const response = await fetch('/api/content');
-        if (response.ok) {
-          const data = await response.json() as SiteContent;
-          setContent(data);
-        }
-      } catch (error) {
-        console.error('Failed to load content:', error);
-      }
-    };
-    loadContent();
-  }, []);
+  const [showPhysicianSummary, setShowPhysicianSummary] = useState(false);
 
   // Autoplay carousel
   useEffect(() => {
@@ -70,8 +56,8 @@ export default function Hero() {
         {/* Hero Content */}
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr] gap-8 lg:gap-12 items-center">
           {/* Product Image Carousel - Left Side */}
-          <div className="flex flex-col items-center gap-4 max-w-[737px] mx-auto lg:mx-0">
-            <div className="relative w-full aspect-square">
+          <div className="flex flex-col items-center gap-4 mx-auto lg:mx-0">
+            <div className="w-[550px] h-[550px] lg:w-[700px] lg:h-[700px] relative">
               {heroImages.map((src, index) => (
                 <div
                   key={src}
@@ -83,7 +69,7 @@ export default function Hero() {
                     src={src}
                     alt={`Dr. Bee Leez Blend - Image ${index + 1}`}
                     fill
-                    className="object-contain"
+                    className={`object-contain ${index === 0 || index === 3 ? "scale-[1.32]" : "scale-[1.2]"}`}
                     priority={index === 0}
                   />
                 </div>
@@ -120,6 +106,15 @@ export default function Hero() {
               <p>{content.hero.paragraph4}</p>
             </div>
 
+            {/* Physician's Summary Button */}
+            <button
+              onClick={() => setShowPhysicianSummary(true)}
+              className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+            >
+              <Stethoscope className="w-5 h-5 shrink-0" />
+              <span>Physician&apos;s Summary</span>
+            </button>
+
             <h2 className="text-royal-blue font-bold text-3xl">
               {content.hero.proofHeading}
             </h2>
@@ -130,9 +125,9 @@ export default function Hero() {
               <a
                 href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
                 download
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-5 h-5 shrink-0" />
                 <span>{content.hero.pdfLinkText}</span>
               </a>
 
@@ -140,70 +135,189 @@ export default function Hero() {
               <a
                 href="/downloads/Powerpoint_Tob_Smoking_New_Perspective_allows_3-8-25.pptx"
                 download
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
-                <Presentation className="w-4 h-4" />
+                <Presentation className="w-5 h-5 shrink-0" />
                 <span>{content.hero.pptxLinkText}</span>
               </a>
             </div>
 
             {/* Purchase Form */}
-            <form
-              method="post"
-              action="https://stats.slimcd.com/cscript/cart32.exe/1549B-AddItem"
-              className="w-full sm:w-auto"
-            >
-              <input type="hidden" name="item" value="Dr. BeeLeez Blend" />
-              <input type="hidden" name="Price" value="50.00" />
-              <input type="hidden" name="PartNo" value="DS1" />
+            <div className="border border-charcoal/10 rounded-lg p-5 w-full max-w-md">
+              <form
+                method="post"
+                action="https://stats.slimcd.com/cscript/cart32.exe/1549B-AddItem"
+                className="flex flex-col gap-4"
+              >
+                <input type="hidden" name="item" value="Dr. BeeLeez Blend" />
+                <input type="hidden" name="Price" value="50.00" />
+                <input type="hidden" name="PartNo" value="DS1" />
 
-              <div className="flex flex-col items-center lg:items-start gap-4">
-                <div className="flex items-center gap-4">
-                  <label htmlFor="qty" className="text-charcoal font-medium">
-                    {content.hero.qtyLabel}
-                  </label>
-                  <input
-                    type="number"
-                    id="qty"
-                    name="Qty"
-                    value={quantity}
-                    onChange={(e) =>
-                      setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-                    }
-                    min="1"
-                    // max="99"
-                    className="w-24 px-3 py-2 border-2 border-charcoal/20 rounded-md text-charcoal focus:border-royal-blue focus:outline-none"
-                  />
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="text-charcoal font-semibold">
-                    {content.hero.priceLabel} ${displayPrice.toFixed(2)}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <label htmlFor="qty" className="text-charcoal/60 text-sm">
+                      {content.hero.qtyLabel}
+                    </label>
+                    <input
+                      type="number"
+                      id="qty"
+                      name="Qty"
+                      value={quantity}
+                      onChange={(e) =>
+                        setQuantity(Math.max(1, parseInt(e.target.value) || 1))
+                      }
+                      min="1"
+                      className="w-16 px-3 py-2 border border-charcoal/20 rounded text-center text-charcoal bg-white"
+                    />
                   </div>
-                  {quantity >= 12 && (
-                    <div className="text-royal-blue font-medium">
-                      {content.hero.saveText12Plus}
+
+                  <div className="text-right">
+                    <div className="text-2xl font-semibold text-charcoal">
+                      ${displayPrice.toFixed(2)}
                     </div>
-                  )}
-                  {quantity >= 3 && quantity < 12 && (
-                    <div className="text-royal-blue font-medium">
-                      {content.hero.saveText3Plus}
+                    <div className="text-charcoal/50 text-sm">
+                      {quantity >= 12 ? (
+                        <span className="text-royal-blue">{content.hero.saveText12Plus}</span>
+                      ) : quantity >= 3 ? (
+                        <span className="text-royal-blue">{content.hero.saveText3Plus}</span>
+                      ) : (
+                        "$50/bottle"
+                      )}
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 bg-royal-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-royal-blue/90 transition-all duration-200 w-full sm:w-auto justify-center"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-royal-blue text-white px-6 py-3 rounded font-[450] hover:bg-royal-blue/90 transition-colors"
                 >
-                  <span>{content.hero.addToCartButtonText}</span>
-                  <ArrowRight className="w-5 h-5" />
+                  {content.hero.addToCartButtonText}
+                  <ArrowRight className="w-4 h-4" />
                 </button>
-              </div>
-            </form>
+
+                <p className="text-charcoal/40 text-sm text-center">
+                  $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Physician's Summary Dialog */}
+      {showPhysicianSummary && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowPhysicianSummary(false)}
+        >
+          <div
+            className="bg-white rounded-lg max-w-xl max-h-[90vh] overflow-y-auto shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-10 py-6 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-royal-blue">Physician&apos;s Summary</h3>
+              <button
+                onClick={() => setShowPhysicianSummary(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Close dialog"
+              >
+                <X className="w-5 h-5 text-charcoal" />
+              </button>
+            </div>
+            <div className="px-10 py-10 text-charcoal space-y-6">
+              <div>
+                <h4 className="text-lg font-bold text-royal-blue mb-3">
+                  A Targeted Nutrient Replenishment Strategy for Smoking-Induced Biochemical Depletion
+                </h4>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Clinical Problem</h5>
+                <p className="leading-relaxed">
+                  Tobacco smoking produces predictable, measurable biochemical injuries, including depletion of
+                  antioxidants, micronutrients, and cellular defense systems. Even patients who are unwilling or
+                  unable to quit continue to experience progressive oxidative stress, impaired glutathione recycling,
+                  mitochondrial dysfunction, and inflammatory burden.
+                </p>
+                <p className="leading-relaxed mt-2">
+                  Traditional cessation-only approaches leave a large patient population biologically unaddressed.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Clinical Solution</h5>
+                <p className="leading-relaxed">
+                  Dr. BeeLeez Blend – Smoker&apos;s Supplement is a patent-protected, clinician-designed recovery and
+                  replenishment system that targets the specific nutrient losses and oxidative damage caused by
+                  tobacco exposure, independent of cessation status.
+                </p>
+                <p className="leading-relaxed mt-2 italic">
+                  This is not a quit-smoking product. It is a harm-reduction and cellular restoration strategy.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Mechanism of Action</h5>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Replenishes smoking-depleted micronutrients</li>
+                  <li>Supports intracellular glutathione synthesis</li>
+                  <li>Restores glutathione recycling capacity</li>
+                  <li>Reduces oxidative stress burden</li>
+                  <li>Supports mitochondrial and cellular resilience</li>
+                  <li>May reduce smoking intensity through improved redox balance</li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Why This Matters Clinically</h5>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Many patients cannot or will not quit immediately</li>
+                  <li>Oxidative damage continues even after cessation</li>
+                  <li>Nutrient depletion is rarely addressed in standard care</li>
+                  <li>Harm-reduction strategies expand therapeutic reach</li>
+                  <li>Supports patients during reduction, cessation, or post-cessation phases</li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Ideal Clinical Candidates</h5>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Current smokers unwilling or unable to quit</li>
+                  <li>Patients attempting smoking reduction</li>
+                  <li>Former smokers with persistent fatigue or inflammation</li>
+                  <li>Patients with elevated oxidative stress markers</li>
+                  <li>Individuals seeking preventive, restorative care</li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Clinical Differentiators</h5>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Patent-protected formulation</li>
+                  <li>Designed specifically for smoking-related depletion</li>
+                  <li>Glutathione-centered mechanism</li>
+                  <li>Evidence-informed and reference-supported</li>
+                  <li>Endorsed by an editor of a laboratory medicine textbook</li>
+                  <li>Non-judgmental, compliance-friendly approach</li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="font-bold mb-2">Clinical Takeaway</h5>
+                <p className="leading-relaxed">
+                  Smoking causes predictable biochemical damage. Restoration should not wait for cessation.
+                  This protocol allows physicians to treat the biology first, improving resilience, compliance, and
+                  long-term outcomes.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-charcoal/70 italic">Text courtesy of Mark Gordon, MD</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
