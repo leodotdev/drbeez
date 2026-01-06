@@ -112,7 +112,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
             >
               <Stethoscope className="w-5 h-5 shrink-0" />
-              <span>Physician&apos;s Summary</span>
+              <span>{content.physicianSummary.buttonText}</span>
             </button>
 
             <h2 className="text-royal-blue font-bold text-3xl">
@@ -215,7 +215,7 @@ export default function Hero() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 bg-white border-b border-gray-200 px-10 py-6 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-royal-blue">Physician&apos;s Summary</h3>
+              <h3 className="text-xl font-bold text-royal-blue">{content.physicianSummary.title}</h3>
               <button
                 onClick={() => setShowPhysicianSummary(false)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -227,92 +227,75 @@ export default function Hero() {
             <div className="px-10 py-10 text-charcoal space-y-6">
               <div>
                 <h4 className="text-lg font-bold text-royal-blue mb-3">
-                  A Targeted Nutrient Replenishment Strategy for Smoking-Induced Biochemical Depletion
+                  {content.physicianSummary.subtitle}
                 </h4>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Clinical Problem</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.clinicalProblemTitle}</h5>
                 <p className="leading-relaxed">
-                  Tobacco smoking produces predictable, measurable biochemical injuries, including depletion of
-                  antioxidants, micronutrients, and cellular defense systems. Even patients who are unwilling or
-                  unable to quit continue to experience progressive oxidative stress, impaired glutathione recycling,
-                  mitochondrial dysfunction, and inflammatory burden.
+                  {content.physicianSummary.clinicalProblemP1}
                 </p>
                 <p className="leading-relaxed mt-2">
-                  Traditional cessation-only approaches leave a large patient population biologically unaddressed.
+                  {content.physicianSummary.clinicalProblemP2}
                 </p>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Clinical Solution</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.clinicalSolutionTitle}</h5>
                 <p className="leading-relaxed">
-                  Dr. BeeLeez Blend – Smoker&apos;s Supplement is a patent-protected, clinician-designed recovery and
-                  replenishment system that targets the specific nutrient losses and oxidative damage caused by
-                  tobacco exposure, independent of cessation status.
+                  {content.physicianSummary.clinicalSolutionP1}
                 </p>
                 <p className="leading-relaxed mt-2 italic">
-                  This is not a quit-smoking product. It is a harm-reduction and cellular restoration strategy.
+                  {content.physicianSummary.clinicalSolutionP2}
                 </p>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Mechanism of Action</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.mechanismTitle}</h5>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Replenishes smoking-depleted micronutrients</li>
-                  <li>Supports intracellular glutathione synthesis</li>
-                  <li>Restores glutathione recycling capacity</li>
-                  <li>Reduces oxidative stress burden</li>
-                  <li>Supports mitochondrial and cellular resilience</li>
-                  <li>May reduce smoking intensity through improved redox balance</li>
+                  {content.physicianSummary.mechanismList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Why This Matters Clinically</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.whyMattersTitle}</h5>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Many patients cannot or will not quit immediately</li>
-                  <li>Oxidative damage continues even after cessation</li>
-                  <li>Nutrient depletion is rarely addressed in standard care</li>
-                  <li>Harm-reduction strategies expand therapeutic reach</li>
-                  <li>Supports patients during reduction, cessation, or post-cessation phases</li>
+                  {content.physicianSummary.whyMattersList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Ideal Clinical Candidates</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.candidatesTitle}</h5>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Current smokers unwilling or unable to quit</li>
-                  <li>Patients attempting smoking reduction</li>
-                  <li>Former smokers with persistent fatigue or inflammation</li>
-                  <li>Patients with elevated oxidative stress markers</li>
-                  <li>Individuals seeking preventive, restorative care</li>
+                  {content.physicianSummary.candidatesList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Clinical Differentiators</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.differentiatorsTitle}</h5>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Patent-protected formulation</li>
-                  <li>Designed specifically for smoking-related depletion</li>
-                  <li>Glutathione-centered mechanism</li>
-                  <li>Evidence-informed and reference-supported</li>
-                  <li>Endorsed by an editor of a laboratory medicine textbook</li>
-                  <li>Non-judgmental, compliance-friendly approach</li>
+                  {content.physicianSummary.differentiatorsList.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
 
               <div>
-                <h5 className="font-bold mb-2">Clinical Takeaway</h5>
+                <h5 className="font-bold mb-2">{content.physicianSummary.takeawayTitle}</h5>
                 <p className="leading-relaxed">
-                  Smoking causes predictable biochemical damage. Restoration should not wait for cessation.
-                  This protocol allows physicians to treat the biology first, improving resilience, compliance, and
-                  long-term outcomes.
+                  {content.physicianSummary.takeawayText}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-gray-200">
-                <p className="text-sm text-charcoal/70 italic">Text courtesy of Mark Gordon, MD</p>
+                <p className="text-sm text-charcoal/70 italic">{content.physicianSummary.attribution}</p>
               </div>
             </div>
           </div>
