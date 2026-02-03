@@ -47,6 +47,7 @@
   --color-gold: #d4af37;
   --color-cream: #fafaf9;
   --color-charcoal: #1f2937;
+  --color-charcoal-muted: #4b5563; /* WCAG AA compliant muted text (4.68:1 on white) */
 
   /* Custom fonts */
   --font-display: var(--font-inter);
@@ -134,4 +135,30 @@
     scroll-behavior: smooth;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   }
+
+  /* Accessible focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-royal-blue);
+    outline-offset: 2px;
+  }
+
+  /* Remove focus outline for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Prevent CLS from images */
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* Prevent CLS - reserve space for header */
+header {
+  min-height: 65px;
+}
+
+/* Prevent CLS from carousel - reserve aspect ratio */
+[aria-roledescription="carousel"] {
+  contain: layout;
 }

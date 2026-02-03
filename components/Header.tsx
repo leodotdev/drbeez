@@ -4,7 +4,7 @@ import { Globe, ChevronDown } from "lucide-react";
 import { useI18n, LANGUAGES, type Language } from "@/lib/i18n";
 
 export default function Header() {
-  const { language, setLanguage } = useI18n();
+  const { language, setLanguage, t: content } = useI18n();
 
   return (
     <header className="bg-white border-b border-charcoal/10 sticky top-0 z-50">
@@ -18,23 +18,29 @@ export default function Header() {
           </div>
 
           {/* Language Switcher */}
-          <div className="flex items-center gap-3">
-            <Globe className="w-5 h-5 text-royal-blue" />
-            <div className="relative">
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value as Language)}
-                className="appearance-none px-5 py-2 pr-10 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] bg-white cursor-pointer hover:border-royal-blue hover:text-royal-blue focus:border-royal-blue focus:outline-none min-w-[140px] transition-all duration-200"
-              >
-                {LANGUAGES.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.label}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal pointer-events-none" />
+          <nav aria-label={content.accessibility.siteNavigation}>
+            <div className="flex items-center gap-3">
+              <Globe className="w-5 h-5 text-royal-blue" aria-hidden="true" />
+              <div className="relative">
+                <label htmlFor="language-selector" className="sr-only">
+                  {content.accessibility.languageSelector}
+                </label>
+                <select
+                  id="language-selector"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value as Language)}
+                  className="appearance-none px-5 py-2 pr-10 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] bg-white cursor-pointer hover:border-royal-blue hover:text-royal-blue focus:border-royal-blue focus:outline-none min-w-[140px] transition-all duration-200"
+                >
+                  {LANGUAGES.map((lang) => (
+                    <option key={lang.code} value={lang.code}>
+                      {lang.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal pointer-events-none" aria-hidden="true" />
+              </div>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>

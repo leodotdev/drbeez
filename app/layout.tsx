@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import SkipLink from "@/components/SkipLink";
 import { I18nProvider } from "@/lib/i18n";
 
 const epilogue = Epilogue({
@@ -34,10 +35,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/product-1.webp" as="image" type="image/webp" />
+        <link rel="prefetch" href="/product-2.webp" as="image" type="image/webp" />
+        <link rel="prefetch" href="/product-3.webp" as="image" type="image/webp" />
+        <link rel="prefetch" href="/product-4.webp" as="image" type="image/webp" />
+      </head>
       <body
         className={`${epilogue.variable} ${inter.variable} antialiased`}
       >
         <I18nProvider>
+          <SkipLink />
           <Header />
           {children}
         </I18nProvider>

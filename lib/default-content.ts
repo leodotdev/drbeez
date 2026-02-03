@@ -1,4 +1,31 @@
 export interface SiteContent {
+  accessibility: {
+    skipToContent: string;
+    languageSelector: string;
+    carouselPause: string;
+    carouselPlay: string;
+    carouselPrevious: string;
+    carouselNext: string;
+    carouselAnnouncement: string;
+    siteNavigation: string;
+    closeDialog: string;
+    productImageAlt: string[];
+  };
+  accessibilityStatement: {
+    title: string;
+    complianceTitle: string;
+    complianceText: string;
+    featuresTitle: string;
+    featuresList: string[];
+    assistiveTechTitle: string;
+    assistiveTechText: string;
+    limitationsTitle: string;
+    limitationsText: string;
+    contactTitle: string;
+    contactText: string;
+    lastUpdated: string;
+    backToHome: string;
+  };
   hero: {
     title: string;
     paragraph1: string;
@@ -68,6 +95,47 @@ export interface SiteContent {
 }
 
 export const defaultContent: SiteContent = {
+  accessibility: {
+    skipToContent: "Skip to main content",
+    languageSelector: "Select language",
+    carouselPause: "Pause carousel",
+    carouselPlay: "Play carousel",
+    carouselPrevious: "Previous image",
+    carouselNext: "Next image",
+    carouselAnnouncement: "Image {current} of {total}",
+    siteNavigation: "Site navigation",
+    closeDialog: "Close dialog",
+    productImageAlt: [
+      "Dr. Bee Leez Blend supplement bottle showing front label with product name and key ingredients",
+      "Dr. Bee Leez Blend bottle showing nutrition facts and supplement information",
+      "Dr. Bee Leez Blend bottle showing dosage instructions and warnings",
+      "Dr. Bee Leez Blend product packaging with patent information and company details",
+    ],
+  },
+  accessibilityStatement: {
+    title: "Accessibility Statement",
+    complianceTitle: "Our Commitment to Accessibility",
+    complianceText: "Dr. Bee Leez Products is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards. This website strives to conform to Web Content Accessibility Guidelines (WCAG) 2.1 Level AA.",
+    featuresTitle: "Accessibility Features",
+    featuresList: [
+      "Skip navigation link to bypass repetitive content",
+      "Keyboard navigation support throughout the site",
+      "Screen reader compatible structure with proper ARIA landmarks",
+      "Sufficient color contrast for text readability",
+      "Alternative text for all meaningful images",
+      "Focus indicators for keyboard users",
+      "Pause controls for auto-playing content",
+      "Multi-language support including RTL languages",
+    ],
+    assistiveTechTitle: "Assistive Technology Compatibility",
+    assistiveTechText: "This website is designed to be compatible with assistive technologies including screen readers (such as NVDA, JAWS, and VoiceOver), screen magnification software, and voice recognition software.",
+    limitationsTitle: "Known Limitations",
+    limitationsText: "While we strive for comprehensive accessibility, some third-party content or older PDF documents may not be fully accessible. We are actively working to address these limitations. If you encounter any barriers, please contact us.",
+    contactTitle: "Feedback and Contact",
+    contactText: "We welcome your feedback on the accessibility of this website. If you encounter any accessibility barriers or have suggestions for improvement, please contact us:",
+    lastUpdated: "This accessibility statement was last updated on February 2026.",
+    backToHome: "Back to Home",
+  },
   hero: {
     title: "What makes Dr. BeeLeez Blend Smoker's Supplement unique?",
     paragraph1: "Tobacco smoking depletes you of specific vitamins, minerals and antioxidants.",

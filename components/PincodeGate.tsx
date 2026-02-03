@@ -49,7 +49,11 @@ export default function PincodeGate({ children }: { children: React.ReactNode })
 
           <form onSubmit={handleSubmit} className="pt-6 space-y-4">
             <div>
+              <label htmlFor="pin-input" className="sr-only">
+                Enter PIN to preview
+              </label>
               <input
+                id="pin-input"
                 type="password"
                 inputMode="numeric"
                 pattern="[0-9]*"
@@ -59,11 +63,21 @@ export default function PincodeGate({ children }: { children: React.ReactNode })
                   setError(false);
                 }}
                 placeholder="Enter PIN to preview"
-                className="w-full px-4 py-3 border-2 border-charcoal/20 rounded-md text-center text-lg font-[family-name:var(--font-body)] focus:outline-none focus:border-royal-blue transition-colors"
+                className={`w-full px-4 py-3 border-2 rounded-md text-center text-lg font-[family-name:var(--font-body)] focus:outline-none focus:border-royal-blue transition-colors ${
+                  error ? "border-red-500" : "border-charcoal/20"
+                }`}
                 maxLength={4}
+                aria-invalid={error}
+                aria-describedby={error ? "pin-error" : undefined}
+                autoComplete="off"
               />
               {error && (
-                <p className="text-red-500 text-sm mt-2 font-[family-name:var(--font-body)]">
+                <p
+                  id="pin-error"
+                  className="text-red-500 text-sm mt-2 font-[family-name:var(--font-body)]"
+                  role="alert"
+                  aria-live="polite"
+                >
                   Incorrect PIN. Please try again.
                 </p>
               )}
