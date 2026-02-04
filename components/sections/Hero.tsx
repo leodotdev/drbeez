@@ -127,7 +127,7 @@ export default function Hero() {
                     alt={content.accessibility.productImageAlt[index] || `Dr. Bee Leez Blend product image ${index + 1}`}
                     width={image.width}
                     height={image.height}
-                    className={`w-full h-full object-contain ${index === 0 ? "scale-150" : ""}`}
+                    className="w-full h-full object-contain"
                     priority={index === 0}
                     loading={index === 0 ? "eager" : "lazy"}
                     sizes="(max-width: 1024px) 400px, 500px"
