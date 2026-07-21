@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { FileText, Presentation, ArrowRight, Stethoscope, X, Pause, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { FileText, Presentation, Stethoscope, X, Pause, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useI18n } from "@/lib/i18n";
 import { useFocusTrap } from "@/lib/hooks/useFocusTrap";
+import CheckoutForm from "@/components/sections/CheckoutForm";
 
 const heroImages = [
   { src: "/product-1.webp", width: 704, height: 832 },
@@ -14,7 +15,6 @@ const heroImages = [
 ];
 
 export default function Hero() {
-  const [quantity, setQuantity] = useState(1);
   const { t: content } = useI18n();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showPhysicianSummary, setShowPhysicianSummary] = useState(false);
@@ -78,33 +78,14 @@ export default function Hero() {
     };
   }, [showPhysicianSummary]);
 
-  // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
-  const calculateDisplayPrice = (qty: number) => {
-    if (qty <= 0) return 0;
-    const basePrice = 50;
-
-    if (qty >= 12) {
-      // 20% off for a box of a dozen or more
-      return qty * basePrice * 0.8;
-    } else if (qty >= 3) {
-      // 10% off for 3+ bottles
-      return qty * basePrice * 0.9;
-    } else {
-      // Regular price for 1-2 bottles
-      return qty * basePrice;
-    }
-  };
-
-  const displayPrice = calculateDisplayPrice(quantity);
-
   return (
     <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto w-full">
         {/* Hero Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_3fr] gap-8 lg:gap-12 items-center">
-          {/* Product Image Carousel - Left Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-12 items-start">
+          {/* Product Image Carousel - Left Side (sticky on desktop so the product stays visible) */}
           <div
-            className="flex flex-col items-center gap-4 mx-auto lg:mx-0 w-full max-w-[400px] lg:max-w-[500px]"
+            className="flex flex-col items-center gap-4 mx-auto lg:mx-0 w-full max-w-[400px] lg:max-w-[500px] lg:sticky lg:top-24"
             role="region"
             aria-roledescription="carousel"
             aria-label="Product images"
@@ -195,41 +176,43 @@ export default function Hero() {
           </div>
 
           {/* Content - Right Side */}
-          <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-8">
-            <h1 className="text-royal-blue text-3xl font-bold tracking-tight leading-tight">
-              {content.hero.title}
-            </h1>
+          <div className="flex flex-col items-center lg:items-start gap-10">
+            {/* Pitch */}
+            <div className="flex flex-col gap-6">
+              <h1 className="text-royal-blue text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-center lg:text-left">
+                {content.hero.title}
+              </h1>
 
-            <div className="flex flex-col gap-6 text-charcoal leading-relaxed">
-              <p>{content.hero.paragraph1}</p>
-              <p>{content.hero.paragraph2}</p>
-              <p>{content.hero.paragraph3}</p>
-              <p>{content.hero.paragraph4}</p>
+              <div className="flex flex-col gap-6 text-charcoal leading-relaxed text-left">
+                <p>{content.hero.paragraph1}</p>
+                <p>{content.hero.paragraph2}</p>
+                <p>{content.hero.paragraph3}</p>
+                <p>{content.hero.paragraph4}</p>
+              </div>
             </div>
 
-            {/* Physician's Summary Button */}
-            <button
-              onClick={() => setShowPhysicianSummary(true)}
-              className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
-              aria-haspopup="dialog"
-            >
-              <Stethoscope className="w-5 h-5 shrink-0" aria-hidden="true" />
-              <span>{content.physicianSummary.buttonText}</span>
-            </button>
+            {/* Evidence: physician's summary & research downloads */}
+            <div className="flex flex-col items-center lg:items-start gap-3 w-full max-w-md">
+              <button
+                onClick={() => setShowPhysicianSummary(true)}
+                className="inline-flex items-center gap-2 px-5 py-2 border border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                aria-haspopup="dialog"
+              >
+                <Stethoscope className="w-5 h-5 shrink-0" aria-hidden="true" />
+                <span>{content.physicianSummary.buttonText}</span>
+              </button>
 
-            <h2 className="text-royal-blue font-bold text-3xl">
-              {content.hero.proofHeading}
-            </h2>
+              <h2 className="text-royal-blue font-bold text-2xl mt-3">
+                {content.hero.proofHeading}
+              </h2>
 
-            {/* Research Downloads - directly under "See the proof!" */}
-            <div className="flex flex-col items-center lg:items-start gap-2.5">
               {/* PDF Download */}
               <a
                 href="/downloads/Abstracts_of_Nutrient_Depletion_10-19-18.pdf"
                 download
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                className="w-full flex items-start gap-2 px-5 py-2.5 border border-charcoal/20 rounded-md text-charcoal font-[450] text-left hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
-                <FileText className="w-5 h-5 shrink-0" aria-hidden="true" />
+                <FileText className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>{content.hero.pdfLinkText}</span>
               </a>
 
@@ -237,71 +220,15 @@ export default function Hero() {
               <a
                 href="/downloads/Powerpoint_Tob_Smoking_New_Perspective_allows_3-8-25.pptx"
                 download
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                className="w-full flex items-start gap-2 px-5 py-2.5 border border-charcoal/20 rounded-md text-charcoal font-[450] text-left hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
               >
-                <Presentation className="w-5 h-5 shrink-0" aria-hidden="true" />
+                <Presentation className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>{content.hero.pptxLinkText}</span>
               </a>
             </div>
 
-            {/* Purchase Form */}
-            <div className="border border-charcoal/10 rounded-lg p-5 w-full max-w-md">
-              <form
-                method="post"
-                action="https://stats.slimcd.com/cscript/cart32.exe/1549B-AddItem"
-                className="flex flex-col gap-4"
-              >
-                <input type="hidden" name="item" value="Dr. BeeLeez Blend" />
-                <input type="hidden" name="Price" value="50.00" />
-                <input type="hidden" name="PartNo" value="DS1" />
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <label htmlFor="qty" className="text-charcoal-muted text-sm">
-                      {content.hero.qtyLabel}
-                    </label>
-                    <input
-                      type="number"
-                      id="qty"
-                      name="Qty"
-                      value={quantity}
-                      onChange={(e) =>
-                        setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-                      }
-                      min="1"
-                      className="w-16 px-3 py-2 border border-charcoal/20 rounded text-center text-charcoal bg-white"
-                    />
-                  </div>
-
-                  <div className="text-right">
-                    <div className="text-2xl font-semibold text-charcoal">
-                      ${displayPrice.toFixed(2)}
-                    </div>
-                    <div className="text-charcoal-muted text-sm">
-                      {quantity >= 12 ? (
-                        <span className="text-royal-blue">{content.hero.saveText12Plus}</span>
-                      ) : quantity >= 3 ? (
-                        <span className="text-royal-blue">{content.hero.saveText3Plus}</span>
-                      ) : (
-                        "$50/bottle"
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-royal-blue text-white px-6 py-3 rounded font-[450] hover:bg-royal-blue/90 transition-colors"
-                >
-                  {content.hero.addToCartButtonText}
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </button>
-
-                <p className="text-charcoal-muted text-sm text-center">
-                  $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+
-                </p>
-              </form>
-            </div>
+            {/* Checkout Form */}
+            <CheckoutForm />
           </div>
         </div>
       </div>

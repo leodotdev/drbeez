@@ -70,6 +70,31 @@ export interface SiteContent {
     disclaimerText: string;
     copyright: string;
   };
+  checkout: {
+    firstNameLabel: string;
+    lastNameLabel: string;
+    shippingAddressLabel: string;
+    billingAddressLabel: string;
+    sameAsShippingLabel: string;
+    address1Label: string;
+    address2Label: string;
+    cityLabel: string;
+    stateLabel: string;
+    zipLabel: string;
+    paymentLabel: string;
+    cardNumberLabel: string;
+    cardExpiryLabel: string;
+    emailLabel: string;
+    submitButtonText: string;
+    submittingText: string;
+    successTitle: string;
+    successMessage: string;
+    errorMessage: string;
+    requiredFieldError: string;
+    invalidCardError: string;
+    invalidExpiryError: string;
+    invalidZipError: string;
+  };
   physicianSummary: {
     buttonText: string;
     title: string;
@@ -194,6 +219,31 @@ export const defaultContent: SiteContent = {
     warningText: "WARNING: Tobacco smoking can lead to cancer and other health risks. DO NOT use this product as an excuse to start or continue smoking.",
     disclaimerText: "† These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use if you have any medical conditions or take medications.",
     copyright: "© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.",
+  },
+  checkout: {
+    firstNameLabel: "First Name",
+    lastNameLabel: "Last Name",
+    shippingAddressLabel: "Shipping Address",
+    billingAddressLabel: "Billing Address",
+    sameAsShippingLabel: "Same as shipping address",
+    address1Label: "Address Line 1",
+    address2Label: "Address Line 2 (optional)",
+    cityLabel: "City",
+    stateLabel: "State",
+    zipLabel: "ZIP Code",
+    paymentLabel: "Payment",
+    cardNumberLabel: "Card Number",
+    cardExpiryLabel: "Expiration Date",
+    emailLabel: "Email for receipt (optional)",
+    submitButtonText: "Place Order",
+    submittingText: "Placing order…",
+    successTitle: "Order received!",
+    successMessage: "Thank you for your order. We will contact you shortly to confirm.",
+    errorMessage: "Something went wrong submitting your order. Please try again or call us.",
+    requiredFieldError: "This field is required",
+    invalidCardError: "Enter a valid card number",
+    invalidExpiryError: "Enter a valid expiration date (MM/YY)",
+    invalidZipError: "Enter a valid ZIP code",
   },
   physicianSummary: {
     buttonText: "Physician's Summary",

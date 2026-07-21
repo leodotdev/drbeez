@@ -42,3 +42,8 @@ next-env.d.ts
 
 # editable content
 /data
+# local secrets for `wrangler pages dev` — not committed
+.dev.vars
+
+# wrangler local state
+.wrangler/

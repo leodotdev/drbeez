@@ -16,7 +16,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-2 text-charcoal-muted text-sm">
           <span>{content.purchase.companyName} | Palm Beach Gardens, FL | {content.purchase.phone}</span>
           <div className="flex items-center gap-4">
-            <span>U.S. Patent #8,889,194</span>
+            <span>U.S. Patent #8889194</span>
             <Link
               href="/accessibility"
               className="hover:text-royal-blue hover:underline"

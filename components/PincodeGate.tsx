@@ -63,7 +63,7 @@ export default function PincodeGate({ children }: { children: React.ReactNode })
                   setError(false);
                 }}
                 placeholder="Enter PIN to preview"
-                className={`w-full px-4 py-3 border-2 rounded-md text-center text-lg font-[family-name:var(--font-body)] focus:outline-none focus:border-royal-blue transition-colors ${
+                className={`w-full px-4 py-3 border rounded-md text-center text-lg font-[family-name:var(--font-body)] focus:outline-none focus:border-royal-blue transition-colors ${
                   error ? "border-red-500" : "border-charcoal/20"
                 }`}
                 maxLength={4}

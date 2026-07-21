@@ -19,7 +19,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Dr. Bee Leez Blend - Smoker's Supplement | Patent-Protected Formula",
-  description: "Scientifically formulated supplement that replaces vitamins, minerals, and antioxidants depleted by tobacco smoking. Based on U.S. Patent #8,889,194 by Dr. Harlan Bieley, MD, MS.",
+  description: "Scientifically formulated supplement that replaces vitamins, minerals, and antioxidants depleted by tobacco smoking. Based on U.S. Patent #8889194 by Dr. Harlan Bieley, MD, MS.",
   keywords: ["smoker's supplement", "vitamin depletion tobacco", "smoking nutrients", "antioxidants for smokers", "B-vitamins smoking"],
   openGraph: {
     title: "Dr. Bee Leez Blend - Smoker's Supplement",
