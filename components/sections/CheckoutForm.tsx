@@ -9,6 +9,9 @@ import type { SiteContent } from "@/lib/default-content";
 // exercised with fake data. Set to false to enforce Luhn/expiry/CVC checks.
 const LENIENT_CARD_VALIDATION = true;
 
+// Standard flat-rate shipping per order; must match functions/api/order.ts
+const SHIPPING_FLAT_RATE = 7.95;
+
 // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
 const calculateDisplayPrice = (qty: number) => {
   if (qty <= 0) return 0;
@@ -218,7 +221,8 @@ export default function CheckoutForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const displayPrice = calculateDisplayPrice(quantity);
+  const subtotal = calculateDisplayPrice(quantity);
+  const orderTotal = subtotal + SHIPPING_FLAT_RATE;
   const checkout = content.checkout;
 
   const clearError = (key: string) =>
@@ -336,7 +340,7 @@ export default function CheckoutForm() {
           billingAddress: trimAddress(billingSameAsShipping ? shipping : billing),
           email: email.trim(),
           quantity,
-          total: displayPrice,
+          total: orderTotal,
           cardNumber: cardNumber.replace(/\D/g, ""),
           cardExpiry,
         }),
@@ -391,7 +395,7 @@ export default function CheckoutForm() {
 
           <div className="text-right">
             <div className="text-2xl font-semibold text-charcoal">
-              ${displayPrice.toFixed(2)}
+              ${orderTotal.toFixed(2)}
             </div>
             <div className="text-charcoal-muted text-sm">
               {quantity >= 12 ? (
@@ -402,6 +406,17 @@ export default function CheckoutForm() {
                 "$50/bottle"
               )}
             </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1 text-sm text-charcoal-muted">
+          <div className="flex justify-between">
+            <span>{checkout.subtotalLabel}</span>
+            <span>${subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>{checkout.shippingLabel}</span>
+            <span>${SHIPPING_FLAT_RATE.toFixed(2)}</span>
           </div>
         </div>
 

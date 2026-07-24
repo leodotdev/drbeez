@@ -17,7 +17,10 @@ type PagesFunction<Env = unknown> = (context: {
 // Production recipients; override with ORDER_EMAIL_TO (comma-separated).
 // NOTE: until a domain is verified in Resend, it only delivers to the Resend
 // account's own address — hence the .dev.vars override for local testing.
-const DEFAULT_ORDER_EMAILS = ["leo@leo.dev", "info@hillestadlabs.com"];
+const DEFAULT_ORDER_EMAILS = [
+  "info@hillestadlabs.com",
+  "qcassistant@hillestadlabs.com",
+];
 
 const jsonResponse = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -30,7 +33,9 @@ const jsonResponse = (body: unknown, status = 200) =>
 
 // Pricing must match components/sections/CheckoutForm.tsx — recomputed
 // server-side so the client-supplied total is never trusted.
-const calculateTotal = (qty: number) => {
+const SHIPPING_FLAT_RATE = 7.95;
+
+const calculateSubtotal = (qty: number) => {
   const basePrice = 50;
   if (qty >= 12) return qty * basePrice * 0.8;
   if (qty >= 3) return qty * basePrice * 0.9;
@@ -104,13 +109,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return jsonResponse({ error: "Missing required fields" }, 400);
   }
 
-  const total = calculateTotal(quantity);
+  const subtotal = calculateSubtotal(quantity);
+  const total = subtotal + SHIPPING_FLAT_RATE;
 
   const emailText = [
     "New Dr. Bee Leez Blend order (TEST MODE — no payment was processed)",
     "",
     `Name: ${firstName} ${lastName}`,
     `Quantity: ${quantity}`,
+    `Subtotal: $${subtotal.toFixed(2)}`,
+    `Shipping (flat rate): $${SHIPPING_FLAT_RATE.toFixed(2)}`,
     `Total: $${total.toFixed(2)}`,
     "",
     "Shipping address:",
@@ -149,7 +157,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Dr. Bee Leez Orders <onboarding@resend.dev>",
+        from: "Dr. Bee Leez Orders <orders@leonardmaurice.com>",
         to,
         reply_to: email || undefined,
         subject: `New order: ${quantity}x Dr. Bee Leez Blend — $${total.toFixed(2)} (${firstName} ${lastName})`,
