@@ -240,7 +240,7 @@ export const defaultContent: SiteContent = {
     cardExpiryLabel: "Expiration Date",
     emailLabel: "Email for receipt (optional)",
     subtotalLabel: "Subtotal",
-    shippingLabel: "Flat-rate shipping",
+    shippingLabel: "Shipping",
     qtyDecreaseLabel: "Decrease quantity",
     qtyIncreaseLabel: "Increase quantity",
     submitButtonText: "Place Order",

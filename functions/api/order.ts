@@ -123,7 +123,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     `Name: ${firstName} ${lastName}`,
     `Quantity: ${quantity}`,
     `Subtotal: $${subtotal.toFixed(2)}`,
-    `Shipping (flat rate): $${shipping.toFixed(2)}`,
+    `Shipping: $${shipping.toFixed(2)}`,
     `Total: $${total.toFixed(2)}`,
     "",
     "Shipping address:",
