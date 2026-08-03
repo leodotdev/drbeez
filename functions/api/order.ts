@@ -33,7 +33,11 @@ const jsonResponse = (body: unknown, status = 200) =>
 
 // Pricing must match components/sections/CheckoutForm.tsx — recomputed
 // server-side so the client-supplied total is never trusted.
-const SHIPPING_FLAT_RATE = 7.95;
+const calculateShipping = (qty: number) => {
+  if (qty >= 12) return 19.95;
+  if (qty >= 3) return 12.95;
+  return 7.95;
+};
 
 const calculateSubtotal = (qty: number) => {
   const basePrice = 50;
@@ -110,7 +114,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const subtotal = calculateSubtotal(quantity);
-  const total = subtotal + SHIPPING_FLAT_RATE;
+  const shipping = calculateShipping(quantity);
+  const total = subtotal + shipping;
 
   const emailText = [
     "New Dr. Bee Leez Blend order (TEST MODE — no payment was processed)",
@@ -118,7 +123,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     `Name: ${firstName} ${lastName}`,
     `Quantity: ${quantity}`,
     `Subtotal: $${subtotal.toFixed(2)}`,
-    `Shipping (flat rate): $${SHIPPING_FLAT_RATE.toFixed(2)}`,
+    `Shipping (flat rate): $${shipping.toFixed(2)}`,
     `Total: $${total.toFixed(2)}`,
     "",
     "Shipping address:",

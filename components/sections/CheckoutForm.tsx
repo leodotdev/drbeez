@@ -9,8 +9,12 @@ import type { SiteContent } from "@/lib/default-content";
 // exercised with fake data. Set to false to enforce Luhn/expiry/CVC checks.
 const LENIENT_CARD_VALIDATION = true;
 
-// Standard flat-rate shipping per order; must match functions/api/order.ts
-const SHIPPING_FLAT_RATE = 7.95;
+// Tiered flat-rate shipping by quantity; must match functions/api/order.ts
+const calculateShipping = (qty: number) => {
+  if (qty >= 12) return 19.95;
+  if (qty >= 3) return 12.95;
+  return 7.95;
+};
 
 // Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
 const calculateDisplayPrice = (qty: number) => {
@@ -222,7 +226,8 @@ export default function CheckoutForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const subtotal = calculateDisplayPrice(quantity);
-  const orderTotal = subtotal + SHIPPING_FLAT_RATE;
+  const shippingCost = calculateShipping(quantity);
+  const orderTotal = subtotal + shippingCost;
   const checkout = content.checkout;
 
   const clearError = (key: string) =>
@@ -416,7 +421,7 @@ export default function CheckoutForm() {
           </div>
           <div className="flex justify-between">
             <span>{checkout.shippingLabel}</span>
-            <span>${SHIPPING_FLAT_RATE.toFixed(2)}</span>
+            <span>${shippingCost.toFixed(2)}</span>
           </div>
         </div>
 
