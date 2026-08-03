@@ -87,6 +87,8 @@ export interface SiteContent {
     emailLabel: string;
     subtotalLabel: string;
     shippingLabel: string;
+    qtyDecreaseLabel: string;
+    qtyIncreaseLabel: string;
     submitButtonText: string;
     submittingText: string;
     successTitle: string;
@@ -239,6 +241,8 @@ export const defaultContent: SiteContent = {
     emailLabel: "Email for receipt (optional)",
     subtotalLabel: "Subtotal",
     shippingLabel: "Flat-rate shipping",
+    qtyDecreaseLabel: "Decrease quantity",
+    qtyIncreaseLabel: "Increase quantity",
     submitButtonText: "Place Order",
     submittingText: "Placing order…",
     successTitle: "Order received!",

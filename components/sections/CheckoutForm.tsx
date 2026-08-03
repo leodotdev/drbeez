@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import type { SiteContent } from "@/lib/default-content";
@@ -387,15 +387,34 @@ export default function CheckoutForm() {
             <label htmlFor="qty" className="text-charcoal-muted text-sm">
               {content.hero.qtyLabel}
             </label>
-            <input
-              type="number"
-              id="qty"
-              name="quantity"
-              value={quantity}
-              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-              min="1"
-              className="w-16 px-3 py-2 border border-charcoal/20 rounded-md text-center text-charcoal bg-white transition-[border-color,box-shadow] duration-150 hover:border-charcoal/40 focus:outline-none focus:border-royal-blue focus:ring-[3px] focus:ring-royal-blue/15"
-            />
+            <div className="flex items-stretch border border-charcoal/20 rounded-md overflow-hidden bg-white">
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                disabled={quantity <= 1}
+                aria-label={checkout.qtyDecreaseLabel}
+                className="w-10 flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 transition-[background-color] duration-150 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <Minus className="w-4 h-4" aria-hidden="true" />
+              </button>
+              <input
+                type="number"
+                id="qty"
+                name="quantity"
+                value={quantity}
+                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                min="1"
+                className="w-12 py-2 border-x border-charcoal/20 text-center text-charcoal bg-white focus:outline-none focus:bg-royal-blue/5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              />
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => q + 1)}
+                aria-label={checkout.qtyIncreaseLabel}
+                className="w-10 flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 transition-[background-color] duration-150"
+              >
+                <Plus className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
           </div>
 
           <div className="text-right">
