@@ -41,6 +41,7 @@ const calculateShipping = (qty: number) => {
 
 const calculateSubtotal = (qty: number) => {
   const basePrice = 50;
+  if (qty >= 24) return qty * basePrice * 0.75;
   if (qty >= 12) return qty * basePrice * 0.8;
   if (qty >= 3) return qty * basePrice * 0.9;
   return qty * basePrice;

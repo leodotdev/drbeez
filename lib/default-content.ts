@@ -39,6 +39,7 @@ export interface SiteContent {
     priceLabel: string;
     saveText3Plus: string;
     saveText12Plus: string;
+    saveText24Plus: string;
     addToCartButtonText: string;
   };
   problemSolution: {
@@ -178,6 +179,7 @@ export const defaultContent: SiteContent = {
     priceLabel: "Price:",
     saveText3Plus: "Save 10%",
     saveText12Plus: "Save 20%",
+    saveText24Plus: "Save 25%",
     addToCartButtonText: "Add to Shopping Cart",
   },
   problemSolution: {

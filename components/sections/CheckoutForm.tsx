@@ -16,12 +16,15 @@ const calculateShipping = (qty: number) => {
   return 7.95;
 };
 
-// Pricing: $50 per bottle, 10% off for 3+ bottles, 20% off for 12+ bottles
+// Pricing: $50 per bottle; 10% off 3+, 20% off 12+, 25% off 24+
+// (institutional multi-dozen rate). Must match functions/api/order.ts.
 const calculateDisplayPrice = (qty: number) => {
   if (qty <= 0) return 0;
   const basePrice = 50;
 
-  if (qty >= 12) {
+  if (qty >= 24) {
+    return qty * basePrice * 0.75;
+  } else if (qty >= 12) {
     return qty * basePrice * 0.8;
   } else if (qty >= 3) {
     return qty * basePrice * 0.9;
@@ -422,7 +425,9 @@ export default function CheckoutForm() {
               ${orderTotal.toFixed(2)}
             </div>
             <div className="text-charcoal-muted text-sm">
-              {quantity >= 12 ? (
+              {quantity >= 24 ? (
+                <span className="text-royal-blue">{content.hero.saveText24Plus}</span>
+              ) : quantity >= 12 ? (
                 <span className="text-royal-blue">{content.hero.saveText12Plus}</span>
               ) : quantity >= 3 ? (
                 <span className="text-royal-blue">{content.hero.saveText3Plus}</span>
@@ -445,7 +450,7 @@ export default function CheckoutForm() {
         </div>
 
         <p className="text-charcoal-muted text-sm text-center">
-          $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+
+          $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+ · {content.hero.saveText24Plus} 24+
         </p>
 
         <hr className="border-charcoal/10" />

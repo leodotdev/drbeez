@@ -76,6 +76,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "Price:",
       saveText3Plus: "Save 10%",
       saveText12Plus: "Save 20%",
+      saveText24Plus: "Save 25%",
       addToCartButtonText: "Add to Shopping Cart",
     },
     problemSolution: {
@@ -255,6 +256,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "Prix :",
       saveText3Plus: "Économisez 10%",
       saveText12Plus: "Économisez 20%",
+      saveText24Plus: "Économisez 25%",
       addToCartButtonText: "Ajouter au panier",
     },
     problemSolution: {
@@ -434,6 +436,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "Preis:",
       saveText3Plus: "10% sparen",
       saveText12Plus: "20% sparen",
+      saveText24Plus: "25% sparen",
       addToCartButtonText: "In den Warenkorb legen",
     },
     problemSolution: {
@@ -613,6 +616,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "Prezzo:",
       saveText3Plus: "Risparmia 10%",
       saveText12Plus: "Risparmia 20%",
+      saveText24Plus: "Risparmia 25%",
       addToCartButtonText: "Aggiungi al carrello",
     },
     problemSolution: {
@@ -792,6 +796,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "Precio:",
       saveText3Plus: "Ahorra 10%",
       saveText12Plus: "Ahorra 20%",
+      saveText24Plus: "Ahorra 25%",
       addToCartButtonText: "Añadir al carrito",
     },
     problemSolution: {
@@ -971,6 +976,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "السعر:",
       saveText3Plus: "وفر 10%",
       saveText12Plus: "وفر 20%",
+      saveText24Plus: "وفر 25%",
       addToCartButtonText: "أضف إلى سلة التسوق",
     },
     problemSolution: {
@@ -1150,6 +1156,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "מחיר:",
       saveText3Plus: "חסכו 10%",
       saveText12Plus: "חסכו 20%",
+      saveText24Plus: "חסכו 25%",
       addToCartButtonText: "הוסף לסל הקניות",
     },
     problemSolution: {
@@ -1329,6 +1336,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "価格：",
       saveText3Plus: "10%割引",
       saveText12Plus: "20%割引",
+      saveText24Plus: "25%割引",
       addToCartButtonText: "カートに追加",
     },
     problemSolution: {
@@ -1508,6 +1516,7 @@ export const translations: Record<Language, SiteContent> = {
       priceLabel: "价格：",
       saveText3Plus: "节省10%",
       saveText12Plus: "节省20%",
+      saveText24Plus: "节省25%",
       addToCartButtonText: "加入购物车",
     },
     problemSolution: {
