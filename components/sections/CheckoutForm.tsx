@@ -5,9 +5,9 @@ import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import type { SiteContent } from "@/lib/default-content";
 
-// TEST MODE: card fields only need to be non-empty so the flow can be
-// exercised with fake data. Set to false to enforce Luhn/expiry/CVC checks.
-const LENIENT_CARD_VALIDATION = true;
+// When true, card fields only need to be non-empty so the flow can be
+// exercised with fake data. False enforces Luhn/expiry checks.
+const LENIENT_CARD_VALIDATION = false;
 
 // Postal shipping per package (max 12 bottles per package):
 // 1 bottle $6, 2 bottles $7, 3 bottles $8, 4–12 bottles $10.

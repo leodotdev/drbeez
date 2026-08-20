@@ -135,7 +135,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const total = subtotal + shipping + HANDLING_FEE + cardFee;
 
   const emailText = [
-    "New Dr. Bee Leez Blend order (TEST MODE — no payment was processed)",
+    "New Dr. Bee Leez Blend order (no payment processed online — charge card manually)",
     "",
     `Name: ${firstName} ${lastName}`,
     `Quantity: ${quantity}`,
