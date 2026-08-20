@@ -520,6 +520,7 @@ export default function CheckoutForm() {
         {/* Payment */}
         <fieldset className="flex flex-col gap-3 bg-gray-50 rounded-lg p-4">
           <legend className={sectionLegendClasses}>{checkout.paymentLabel}</legend>
+          <div className="grid grid-cols-[2fr_1fr] gap-3">
           <div>
             <label htmlFor="checkout-card-number" className={labelClasses}>
             {checkout.cardNumberLabel}
@@ -546,7 +547,6 @@ export default function CheckoutForm() {
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
           <div>
             <label htmlFor="checkout-card-expiry" className={labelClasses}>
               {checkout.cardExpiryLabel}
