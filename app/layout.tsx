@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import SkipLink from "@/components/SkipLink";
 import { I18nProvider } from "@/lib/i18n";
+import { OrderDrawerProvider } from "@/components/OrderDrawer";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -45,9 +46,11 @@ export default function RootLayout({
         className={`${epilogue.variable} ${inter.variable} antialiased`}
       >
         <I18nProvider>
-          <SkipLink />
-          <Header />
-          {children}
+          <OrderDrawerProvider>
+            <SkipLink />
+            <Header />
+            {children}
+          </OrderDrawerProvider>
         </I18nProvider>
       </body>
     </html>

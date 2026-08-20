@@ -41,6 +41,7 @@ export interface SiteContent {
     saveText12Plus: string;
     saveText24Plus: string;
     addToCartButtonText: string;
+    orderNowText: string;
   };
   problemSolution: {
     problemTitle: string;
@@ -72,6 +73,7 @@ export interface SiteContent {
     copyright: string;
   };
   checkout: {
+    nameLabel: string;
     firstNameLabel: string;
     lastNameLabel: string;
     shippingAddressLabel: string;
@@ -184,6 +186,7 @@ export const defaultContent: SiteContent = {
     saveText12Plus: "Save 20%",
     saveText24Plus: "Save 25%",
     addToCartButtonText: "Add to Shopping Cart",
+    orderNowText: "Order Now",
   },
   problemSolution: {
     problemTitle: "Tobacco Depletes Your Body",
@@ -230,8 +233,9 @@ export const defaultContent: SiteContent = {
     copyright: "© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.",
   },
   checkout: {
-    firstNameLabel: "First Name",
-    lastNameLabel: "Last Name",
+    nameLabel: "Name",
+    firstNameLabel: "First",
+    lastNameLabel: "Last",
     shippingAddressLabel: "Shipping Address",
     billingAddressLabel: "Billing Address",
     sameAsShippingLabel: "Same as shipping address",

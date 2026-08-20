@@ -5,7 +5,7 @@ import { FileText, Presentation, Stethoscope, X, Pause, Play, ChevronLeft, Chevr
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useI18n } from "@/lib/i18n";
 import { useFocusTrap } from "@/lib/hooks/useFocusTrap";
-import CheckoutForm from "@/components/sections/CheckoutForm";
+import { useOrderDrawer } from "@/components/OrderDrawer";
 
 const heroImages = [
   { src: "/product-1.webp", width: 704, height: 832 },
@@ -16,6 +16,7 @@ const heroImages = [
 
 export default function Hero() {
   const { t: content } = useI18n();
+  const { openOrderDrawer } = useOrderDrawer();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showPhysicianSummary, setShowPhysicianSummary] = useState(false);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
@@ -193,14 +194,25 @@ export default function Hero() {
 
             {/* Evidence: physician's summary & research downloads */}
             <div className="flex flex-col items-center lg:items-start gap-3 w-full max-w-md">
-              <button
-                onClick={() => setShowPhysicianSummary(true)}
-                className="inline-flex items-center gap-2 px-5 py-2 border border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
-                aria-haspopup="dialog"
-              >
-                <Stethoscope className="w-5 h-5 shrink-0" aria-hidden="true" />
-                <span>{content.physicianSummary.buttonText}</span>
-              </button>
+              <div className="flex items-stretch gap-3 flex-wrap justify-center lg:justify-start">
+                <button
+                  onClick={openOrderDrawer}
+                  className="inline-flex items-baseline gap-2 px-5 py-2 bg-royal-blue text-white rounded-md hover:bg-royal-blue/90 transition-[background-color,transform] duration-150 active:scale-[0.96]"
+                  aria-haspopup="dialog"
+                >
+                  <span className="font-[450]">{content.hero.orderNowText}</span>
+                  <span className="text-xs text-white/80">$50/bottle</span>
+                </button>
+
+                <button
+                  onClick={() => setShowPhysicianSummary(true)}
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-charcoal/20 rounded-md text-charcoal font-[450] hover:border-royal-blue hover:text-royal-blue transition-all duration-200"
+                  aria-haspopup="dialog"
+                >
+                  <Stethoscope className="w-5 h-5 shrink-0" aria-hidden="true" />
+                  <span>{content.physicianSummary.buttonText}</span>
+                </button>
+              </div>
 
               <h2 className="text-royal-blue font-bold text-2xl mt-3">
                 {content.hero.proofHeading}
@@ -226,9 +238,6 @@ export default function Hero() {
                 <span>{content.hero.pptxLinkText}</span>
               </a>
             </div>
-
-            {/* Checkout Form */}
-            <CheckoutForm />
           </div>
         </div>
       </div>

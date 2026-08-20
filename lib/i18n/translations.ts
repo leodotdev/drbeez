@@ -78,6 +78,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "Save 20%",
       saveText24Plus: "Save 25%",
       addToCartButtonText: "Add to Shopping Cart",
+      orderNowText: "Order Now",
     },
     problemSolution: {
       problemTitle: "Tobacco Depletes Your Body",
@@ -124,8 +125,9 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.",
     },
     checkout: {
-      firstNameLabel: "First Name",
-      lastNameLabel: "Last Name",
+      nameLabel: "Name",
+      firstNameLabel: "First",
+      lastNameLabel: "Last",
       shippingAddressLabel: "Shipping Address",
       billingAddressLabel: "Billing Address",
       sameAsShippingLabel: "Same as shipping address",
@@ -261,6 +263,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "Économisez 20%",
       saveText24Plus: "Économisez 25%",
       addToCartButtonText: "Ajouter au panier",
+      orderNowText: "Commander",
     },
     problemSolution: {
       problemTitle: "Le tabac épuise votre corps",
@@ -307,8 +310,9 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. Tous droits réservés.",
     },
     checkout: {
+      nameLabel: "Nom",
       firstNameLabel: "Prénom",
-      lastNameLabel: "Nom",
+      lastNameLabel: "Nom de famille",
       shippingAddressLabel: "Adresse de livraison",
       billingAddressLabel: "Adresse de facturation",
       sameAsShippingLabel: "Identique à l'adresse de livraison",
@@ -444,6 +448,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "20% sparen",
       saveText24Plus: "25% sparen",
       addToCartButtonText: "In den Warenkorb legen",
+      orderNowText: "Jetzt bestellen",
     },
     problemSolution: {
       problemTitle: "Tabak entzieht Ihrem Körper Nährstoffe",
@@ -490,6 +495,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. Alle Rechte vorbehalten.",
     },
     checkout: {
+      nameLabel: "Name",
       firstNameLabel: "Vorname",
       lastNameLabel: "Nachname",
       shippingAddressLabel: "Lieferadresse",
@@ -627,6 +633,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "Risparmia 20%",
       saveText24Plus: "Risparmia 25%",
       addToCartButtonText: "Aggiungi al carrello",
+      orderNowText: "Ordina ora",
     },
     problemSolution: {
       problemTitle: "Il tabacco impoverisce il tuo corpo",
@@ -673,6 +680,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. Tutti i diritti riservati.",
     },
     checkout: {
+      nameLabel: "Nome",
       firstNameLabel: "Nome",
       lastNameLabel: "Cognome",
       shippingAddressLabel: "Indirizzo di spedizione",
@@ -810,6 +818,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "Ahorra 20%",
       saveText24Plus: "Ahorra 25%",
       addToCartButtonText: "Añadir al carrito",
+      orderNowText: "Pedir ahora",
     },
     problemSolution: {
       problemTitle: "El tabaco agota tu cuerpo",
@@ -856,6 +865,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. Todos los derechos reservados.",
     },
     checkout: {
+      nameLabel: "Nombre",
       firstNameLabel: "Nombre",
       lastNameLabel: "Apellido",
       shippingAddressLabel: "Dirección de envío",
@@ -993,6 +1003,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "وفر 20%",
       saveText24Plus: "وفر 25%",
       addToCartButtonText: "أضف إلى سلة التسوق",
+      orderNowText: "اطلب الآن",
     },
     problemSolution: {
       problemTitle: "التبغ يستنزف جسمك",
@@ -1039,6 +1050,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. جميع الحقوق محفوظة.",
     },
     checkout: {
+      nameLabel: "الاسم",
       firstNameLabel: "الاسم الأول",
       lastNameLabel: "اسم العائلة",
       shippingAddressLabel: "عنوان الشحن",
@@ -1176,6 +1188,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "חסכו 20%",
       saveText24Plus: "חסכו 25%",
       addToCartButtonText: "הוסף לסל הקניות",
+      orderNowText: "הזמינו עכשיו",
     },
     problemSolution: {
       problemTitle: "הטבק מדלדל את גופך",
@@ -1222,6 +1235,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. כל הזכויות שמורות.",
     },
     checkout: {
+      nameLabel: "שם",
       firstNameLabel: "שם פרטי",
       lastNameLabel: "שם משפחה",
       shippingAddressLabel: "כתובת למשלוח",
@@ -1359,6 +1373,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "20%割引",
       saveText24Plus: "25%割引",
       addToCartButtonText: "カートに追加",
+      orderNowText: "今すぐ注文",
     },
     problemSolution: {
       problemTitle: "タバコは体を消耗させる",
@@ -1405,6 +1420,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. All Rights Reserved.",
     },
     checkout: {
+      nameLabel: "氏名",
       firstNameLabel: "名",
       lastNameLabel: "姓",
       shippingAddressLabel: "配送先住所",
@@ -1542,6 +1558,7 @@ export const translations: Record<Language, SiteContent> = {
       saveText12Plus: "节省20%",
       saveText24Plus: "节省25%",
       addToCartButtonText: "加入购物车",
+      orderNowText: "立即订购",
     },
     problemSolution: {
       problemTitle: "烟草消耗您的身体",
@@ -1588,6 +1605,7 @@ export const translations: Record<Language, SiteContent> = {
       copyright: "© 2019-2025 Harlan Bieley, MD, MS. 版权所有。",
     },
     checkout: {
+      nameLabel: "姓名",
       firstNameLabel: "名字",
       lastNameLabel: "姓氏",
       shippingAddressLabel: "收货地址",

@@ -115,8 +115,10 @@ const requiredAddressFields: (keyof Address)[] = ["address1", "city", "state", "
 const inputClasses =
   "w-full px-3 py-2 border border-charcoal/20 rounded-md text-charcoal bg-white transition-[border-color,box-shadow] duration-150 hover:border-charcoal/40 focus:outline-none focus:border-royal-blue focus:ring-[3px] focus:ring-royal-blue/15 aria-invalid:border-red-400";
 const labelClasses = "block text-charcoal-muted text-sm mb-1";
+// float-left pulls the legend out of the fieldset's border area so it renders
+// inside the card background like a normal element.
 const sectionLegendClasses =
-  "text-xs font-semibold uppercase tracking-wider text-charcoal-muted mb-2";
+  "float-left w-full text-xs font-semibold uppercase tracking-wider text-charcoal-muted mb-2";
 const errorClasses = "text-red-600 text-sm mt-1";
 
 interface AddressFieldsetProps {
@@ -379,7 +381,7 @@ export default function CheckoutForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-charcoal/10 rounded-lg p-8 w-full max-w-md flex flex-col items-center text-center gap-3">
+      <div className="w-full py-8 flex flex-col items-center text-center gap-3">
         <CheckCircle2 className="w-10 h-10 text-royal-blue" aria-hidden="true" />
         <p className="text-xl font-semibold text-charcoal">{checkout.successTitle}</p>
         <p className="text-charcoal-muted">{checkout.successMessage}</p>
@@ -388,13 +390,15 @@ export default function CheckoutForm() {
   }
 
   return (
-    <div className="border border-charcoal/10 rounded-lg p-5 w-full max-w-md">
+    <div className="w-full">
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+        {/* Dev-only helper; floated out of the form so it never affects its
+            layout. Remove along with LENIENT_CARD_VALIDATION. */}
         {LENIENT_CARD_VALIDATION && (
           <button
             type="button"
             onClick={fillTestData}
-            className="w-full px-4 py-2 border border-dashed border-charcoal/30 rounded-md text-sm text-charcoal-muted hover:border-royal-blue hover:text-royal-blue transition-[border-color,color,transform] duration-150 active:scale-[0.96]"
+            className="fixed bottom-4 left-4 z-[60] px-4 py-2 border border-dashed border-charcoal/30 rounded-md text-sm text-charcoal-muted bg-white shadow-md hover:border-royal-blue hover:text-royal-blue transition-[border-color,color,transform] duration-150 active:scale-[0.96]"
           >
             Fill with test data (temporary)
           </button>
@@ -479,14 +483,10 @@ export default function CheckoutForm() {
           </div>
         </div>
 
-        <p className="text-charcoal-muted text-sm text-center">
-          $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+ · {content.hero.saveText24Plus} 24+
-        </p>
-
-        <hr className="border-charcoal/10" />
-
         {/* Name */}
-        <div className="grid grid-cols-2 gap-3">
+        <fieldset className="flex flex-col gap-2 bg-gray-50 rounded-lg p-4 mt-3">
+          <legend className={sectionLegendClasses}>{checkout.nameLabel}</legend>
+          <div className="grid grid-cols-2 gap-3">
           <div>
             <label htmlFor="checkout-first-name" className={labelClasses}>
               {checkout.firstNameLabel}
@@ -531,10 +531,11 @@ export default function CheckoutForm() {
               <p id="checkout-last-name-error" className={errorClasses}>{errors.lastName}</p>
             )}
           </div>
-        </div>
+          </div>
+        </fieldset>
 
         {/* Shipping Address */}
-        <fieldset className="flex flex-col gap-2">
+        <fieldset className="flex flex-col gap-2 bg-gray-50 rounded-lg p-4">
           <legend className={sectionLegendClasses}>
             {checkout.shippingAddressLabel}
           </legend>
@@ -549,7 +550,7 @@ export default function CheckoutForm() {
         </fieldset>
 
         {/* Payment */}
-        <fieldset className="flex flex-col gap-3">
+        <fieldset className="flex flex-col gap-3 bg-gray-50 rounded-lg p-4">
           <legend className={sectionLegendClasses}>{checkout.paymentLabel}</legend>
           <div>
             <label htmlFor="checkout-card-number" className={labelClasses}>
@@ -607,7 +608,7 @@ export default function CheckoutForm() {
         </fieldset>
 
         {/* Billing Address */}
-        <fieldset className="flex flex-col gap-2">
+        <fieldset className="flex flex-col gap-2 bg-gray-50 rounded-lg p-4">
           <legend className={sectionLegendClasses}>
             {checkout.billingAddressLabel}
           </legend>
@@ -633,7 +634,7 @@ export default function CheckoutForm() {
         </fieldset>
 
         {/* Email (optional) */}
-        <div>
+        <div className="bg-gray-50 rounded-lg p-4">
           <label htmlFor="checkout-email" className={labelClasses}>
             {checkout.emailLabel}
           </label>
