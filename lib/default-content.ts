@@ -87,7 +87,10 @@ export interface SiteContent {
     cardExpiryLabel: string;
     emailLabel: string;
     subtotalLabel: string;
+    discountLabel: string;
     shippingLabel: string;
+    handlingLabel: string;
+    cardFeeLabel: string;
     qtyDecreaseLabel: string;
     qtyIncreaseLabel: string;
     submitButtonText: string;
@@ -242,7 +245,10 @@ export const defaultContent: SiteContent = {
     cardExpiryLabel: "Expiration Date",
     emailLabel: "Email for receipt (optional)",
     subtotalLabel: "Subtotal",
+    discountLabel: "Discount",
     shippingLabel: "Shipping",
+    handlingLabel: "Handling",
+    cardFeeLabel: "Card processing (3%)",
     qtyDecreaseLabel: "Decrease quantity",
     qtyIncreaseLabel: "Increase quantity",
     submitButtonText: "Place Order",

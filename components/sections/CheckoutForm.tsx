@@ -9,12 +9,23 @@ import type { SiteContent } from "@/lib/default-content";
 // exercised with fake data. Set to false to enforce Luhn/expiry/CVC checks.
 const LENIENT_CARD_VALIDATION = true;
 
-// Tiered flat-rate shipping by quantity; must match functions/api/order.ts
+// Postal shipping per package (max 12 bottles per package):
+// 1 bottle $6, 2 bottles $7, 3 bottles $8, 4–12 bottles $10.
+// Orders over 12 ship as multiple packages. Must match functions/api/order.ts.
 const calculateShipping = (qty: number) => {
-  if (qty >= 12) return 19.95;
-  if (qty >= 3) return 12.95;
-  return 7.95;
+  let cost = 0;
+  for (let remaining = qty; remaining > 0; remaining -= 12) {
+    const inPackage = Math.min(remaining, 12);
+    cost += inPackage >= 4 ? 10 : inPackage === 3 ? 8 : inPackage === 2 ? 7 : 6;
+  }
+  return cost;
 };
+
+// Flat labor fee per order (invoicing, picking, packing).
+const HANDLING_FEE = 5;
+
+// Credit card processing surcharge on the full charged amount.
+const CARD_FEE_RATE = 0.03;
 
 // Pricing: $50 per bottle; 10% off 3+, 20% off 12+, 25% off 24+
 // (institutional multi-dozen rate). Must match functions/api/order.ts.
@@ -229,8 +240,13 @@ export default function CheckoutForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const subtotal = calculateDisplayPrice(quantity);
+  const fullPrice = quantity * 50;
+  const discount = fullPrice - subtotal;
+  const discountPercent = quantity >= 24 ? 25 : quantity >= 12 ? 20 : quantity >= 3 ? 10 : 0;
   const shippingCost = calculateShipping(quantity);
-  const orderTotal = subtotal + shippingCost;
+  const cardFee =
+    Math.round((subtotal + shippingCost + HANDLING_FEE) * CARD_FEE_RATE * 100) / 100;
+  const orderTotal = subtotal + shippingCost + HANDLING_FEE + cardFee;
   const checkout = content.checkout;
 
   const clearError = (key: string) =>
@@ -441,11 +457,25 @@ export default function CheckoutForm() {
         <div className="flex flex-col gap-1 text-sm text-charcoal-muted">
           <div className="flex justify-between">
             <span>{checkout.subtotalLabel}</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>${fullPrice.toFixed(2)}</span>
           </div>
+          {discount > 0 && (
+            <div className="flex justify-between text-royal-blue">
+              <span>{checkout.discountLabel} ({discountPercent}%)</span>
+              <span>−${discount.toFixed(2)}</span>
+            </div>
+          )}
           <div className="flex justify-between">
             <span>{checkout.shippingLabel}</span>
             <span>${shippingCost.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>{checkout.handlingLabel}</span>
+            <span>${HANDLING_FEE.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>{checkout.cardFeeLabel}</span>
+            <span>${cardFee.toFixed(2)}</span>
           </div>
         </div>
 

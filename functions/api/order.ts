@@ -33,11 +33,22 @@ const jsonResponse = (body: unknown, status = 200) =>
 
 // Pricing must match components/sections/CheckoutForm.tsx — recomputed
 // server-side so the client-supplied total is never trusted.
+// Postal shipping per package (max 12 bottles per package):
+// 1 bottle $6, 2 bottles $7, 3 bottles $8, 4–12 bottles $10.
 const calculateShipping = (qty: number) => {
-  if (qty >= 12) return 19.95;
-  if (qty >= 3) return 12.95;
-  return 7.95;
+  let cost = 0;
+  for (let remaining = qty; remaining > 0; remaining -= 12) {
+    const inPackage = Math.min(remaining, 12);
+    cost += inPackage >= 4 ? 10 : inPackage === 3 ? 8 : inPackage === 2 ? 7 : 6;
+  }
+  return cost;
 };
+
+// Flat labor fee per order (invoicing, picking, packing).
+const HANDLING_FEE = 5;
+
+// Credit card processing surcharge on the full charged amount.
+const CARD_FEE_RATE = 0.03;
 
 const calculateSubtotal = (qty: number) => {
   const basePrice = 50;
@@ -115,16 +126,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const subtotal = calculateSubtotal(quantity);
+  const fullPrice = quantity * 50;
+  const discount = fullPrice - subtotal;
+  const discountPercent = quantity >= 24 ? 25 : quantity >= 12 ? 20 : quantity >= 3 ? 10 : 0;
   const shipping = calculateShipping(quantity);
-  const total = subtotal + shipping;
+  const cardFee =
+    Math.round((subtotal + shipping + HANDLING_FEE) * CARD_FEE_RATE * 100) / 100;
+  const total = subtotal + shipping + HANDLING_FEE + cardFee;
 
   const emailText = [
     "New Dr. Bee Leez Blend order (TEST MODE — no payment was processed)",
     "",
     `Name: ${firstName} ${lastName}`,
     `Quantity: ${quantity}`,
-    `Subtotal: $${subtotal.toFixed(2)}`,
+    `Subtotal: $${fullPrice.toFixed(2)}`,
+    ...(discount > 0 ? [`Discount (${discountPercent}%): -$${discount.toFixed(2)}`] : []),
     `Shipping: $${shipping.toFixed(2)}`,
+    `Handling: $${HANDLING_FEE.toFixed(2)}`,
+    `Card processing (3%): $${cardFee.toFixed(2)}`,
     `Total: $${total.toFixed(2)}`,
     "",
     "Shipping address:",
