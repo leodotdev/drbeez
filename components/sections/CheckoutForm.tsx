@@ -322,26 +322,6 @@ export default function CheckoutForm() {
     return Object.keys(next).length === 0;
   };
 
-  // TEMP: dummy data for exercising the form; button renders only while
-  // LENIENT_CARD_VALIDATION is on, so both disappear together for production.
-  const fillTestData = () => {
-    setFirstName("Test");
-    setLastName("Order");
-    setShipping({
-      address1: "123 Main Street",
-      address2: "Apt 4",
-      city: "Miami",
-      state: "FL",
-      zip: "33133",
-    });
-    setBilling(emptyAddress);
-    setBillingSameAsShipping(true);
-    setCardNumber(formatCardNumber("4242424242424242"));
-    setCardExpiry("12/30");
-    setEmail("leo@leo.dev");
-    setErrors({});
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
@@ -392,18 +372,6 @@ export default function CheckoutForm() {
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-        {/* Dev-only helper; floated out of the form so it never affects its
-            layout. Remove along with LENIENT_CARD_VALIDATION. */}
-        {LENIENT_CARD_VALIDATION && (
-          <button
-            type="button"
-            onClick={fillTestData}
-            className="fixed bottom-4 left-4 z-[60] px-4 py-2 border border-dashed border-charcoal/30 rounded-md text-sm text-charcoal-muted bg-white shadow-md hover:border-royal-blue hover:text-royal-blue transition-[border-color,color,transform] duration-150 active:scale-[0.96]"
-          >
-            Fill with test data (temporary)
-          </button>
-        )}
-
         {/* Quantity & Pricing */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
