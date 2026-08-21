@@ -40,6 +40,7 @@ export interface SiteContent {
     saveText3Plus: string;
     saveText12Plus: string;
     saveText24Plus: string;
+    saveTierTemplate: string;
     addToCartButtonText: string;
     orderNowText: string;
   };
@@ -91,7 +92,6 @@ export interface SiteContent {
     subtotalLabel: string;
     discountLabel: string;
     shippingLabel: string;
-    handlingLabel: string;
     cardFeeLabel: string;
     qtyDecreaseLabel: string;
     qtyIncreaseLabel: string;
@@ -185,6 +185,7 @@ export const defaultContent: SiteContent = {
     saveText3Plus: "Save 10%",
     saveText12Plus: "Save 20%",
     saveText24Plus: "Save 25%",
+    saveTierTemplate: "Save {percent}% on {count}+",
     addToCartButtonText: "Add to Shopping Cart",
     orderNowText: "Order Now",
   },
@@ -250,8 +251,7 @@ export const defaultContent: SiteContent = {
     emailLabel: "Email for receipt (optional)",
     subtotalLabel: "Subtotal",
     discountLabel: "Discount",
-    shippingLabel: "Shipping",
-    handlingLabel: "Handling",
+    shippingLabel: "Shipping & handling",
     cardFeeLabel: "Card processing (3%)",
     qtyDecreaseLabel: "Decrease quantity",
     qtyIncreaseLabel: "Increase quantity",

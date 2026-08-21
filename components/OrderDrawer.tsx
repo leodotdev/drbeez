@@ -36,6 +36,11 @@ export function OrderDrawerProvider({ children }: { children: ReactNode }) {
 
   const openOrderDrawer = useCallback(() => setIsOpen(true), []);
 
+  const saveTier = (percent: number, count: number) =>
+    content.hero.saveTierTemplate
+      .replace("{percent}", String(percent))
+      .replace("{count}", String(count));
+
   // Focus management: move focus into the drawer, restore on close
   useEffect(() => {
     if (isOpen) {
@@ -90,7 +95,7 @@ export function OrderDrawerProvider({ children }: { children: ReactNode }) {
                   {content.hero.orderNowText}
                 </h3>
                 <p className="text-charcoal-muted text-xs mt-0.5">
-                  $50/bottle · {content.hero.saveText3Plus} 3+ · {content.hero.saveText12Plus} 12+ · {content.hero.saveText24Plus} 24+
+                  $50/bottle · {saveTier(10, 3)} · {saveTier(20, 12)} · {saveTier(25, 24)}
                 </p>
               </div>
               <button

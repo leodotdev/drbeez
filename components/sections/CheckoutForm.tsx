@@ -439,11 +439,7 @@ export default function CheckoutForm() {
           )}
           <div className="flex justify-between">
             <span>{checkout.shippingLabel}</span>
-            <span>${shippingCost.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>{checkout.handlingLabel}</span>
-            <span>${HANDLING_FEE.toFixed(2)}</span>
+            <span>${(shippingCost + HANDLING_FEE).toFixed(2)}</span>
           </div>
           <div className="flex justify-between">
             <span>{checkout.cardFeeLabel}</span>
